@@ -1,0 +1,26 @@
+.card {
+    margin: auto;
+    margin-bottom: 2em;
+    
+    
+    
+}
+
+.card-header {
+    padding-top: 1em;
+}
+
+.card-body{
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding-bottom: 1em;
+}
+
+.form-label{
+    font-weight: bold;
+}
+
+.form-label::after {
+    content: " *";
+    color: red;
+}
