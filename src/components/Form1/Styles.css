@@ -3,6 +3,7 @@
     margin-bottom: 2em;
     width: auto;
     max-width: 50em;
+    
 }
 
 .card-header {
@@ -26,4 +27,5 @@
 
 Button{
     width: 15em;
+   
 }
