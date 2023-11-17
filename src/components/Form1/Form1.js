@@ -9,7 +9,7 @@ const Form1 = () => {
     const [formData, setFormData] = useState({
         "entry.1830245759": "",
         "entry.753111962": "",
-        "entry.2122914383": ""
+        "entry.2122914383": "sem documento"
     });
 
     const handleInputData = (input) => (e) => {
@@ -138,6 +138,9 @@ const Form1 = () => {
                                     id="documento"
                                     accept=".pdf"
                                 />
+                                <Button onClick={handleFileUpload} className="btn-success mt-2">
+                                    Enviar
+                                </Button>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
@@ -152,7 +155,7 @@ const Form1 = () => {
 
                             {loading && <div>Carregando...</div>}
 
-                            <Button onClick={handleFileUpload} type="submit" disabled={loading}>
+                            <Button type="submit" disabled={loading}>
                                 Enviar
                             </Button>
 
