@@ -5,10 +5,11 @@ import './Styles.css';
 
 const Form1 = () => {
     const [submit, setSubmit] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         "entry.1830245759": "",
         "entry.753111962": "",
-        "entry.2122914383": "padrao"
+        "entry.2122914383": ""
     });
 
     const handleInputData = (input) => (e) => {
@@ -23,6 +24,7 @@ const Form1 = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         setSubmit(true);
+        handleFileUpload();
 
         let url = `https://docs.google.com/forms/d/e/1FAIpQLSffrX55aeqhkSSAKDr7o6AvkUsBDTG2a3S2Wmy3LoRztUpHgg/formResponse?entry.1830245759=${formData["entry.1830245759"]}&entry.753111962=${formData["entry.753111962"]}&entry.2122914383=${formData["entry.2122914383"]}`;
 
@@ -32,30 +34,43 @@ const Form1 = () => {
                 "Content-Type": "application/x-www-form-urlencoded"
             }
         });
+        // Reseta o estado de loading e submit após o envio do formulário
+        setLoading(false);
+        setSubmit(false);
     }
 
     const fileInputRef = useRef(null);
+
     const handleFileUpload = async () => {
+        setLoading(true);
+
         const files = fileInputRef.current.files;
         if (files.length > 0) {
             const formData1 = new FormData();
             for (let file of files) {
                 formData1.append('files', file);
             }
+
             try {
                 const response = await fetch('http://fullstackers.com.br:5000/upload', {
                     method: 'POST',
                     body: formData1
                 });
-                const data = await response.json();
-                setFormData((prevState) => ({
-                    ...prevState,
-                    "entry.2122914383": data.files[0].id
-                }));
-                console.log(`id = ${data.files[0].id}`);
-            }
-            catch (e) {
-                console.log(e);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setFormData((prevState) => ({
+                        ...prevState,
+                        "entry.2122914383": data.files[0].id
+                    }));
+                    console.log(`id = ${data.files[0].id}`);
+                } else {
+                    console.error("Falha ao fazer upload do arquivo");
+                }
+            } catch (error) {
+                console.error("Erro ao enviar arquivo:", error);
+            } finally {
+                setLoading(false); // Desativa o estado de carregamento
             }
         }
     };
@@ -70,7 +85,7 @@ const Form1 = () => {
 
                 <Card.Body>
                     {submit ? (null) : (
-                        <Form onSubmit={(e) => {handleSubmit(e); handleFileUpload();}} target="_self">
+                        <Form onSubmit={handleSubmit} target="_self">
 
                             <Form.Group className="mb-3">
                                 <Form.Label htmlFor="entry.1830245759" className="form-label">Nome/Razão Social</Form.Label>
@@ -131,10 +146,13 @@ const Form1 = () => {
                                     type="text"
                                     className="form-control"
                                     name="entry.2122914383"
+                                    value={formData["entry.2122914383"]}
                                 />
                             </Form.Group>
 
-                            <Button type="submit">
+                            {loading && <div>Carregando...</div>}
+
+                            <Button onClick={handleFileUpload} type="submit" disabled={loading}>
                                 Enviar
                             </Button>
 
