@@ -24,7 +24,6 @@ const Form1 = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         setSubmit(true);
-        handleFileUpload();
 
         let url = `https://docs.google.com/forms/d/e/1FAIpQLSffrX55aeqhkSSAKDr7o6AvkUsBDTG2a3S2Wmy3LoRztUpHgg/formResponse?entry.1830245759=${formData["entry.1830245759"]}&entry.753111962=${formData["entry.753111962"]}&entry.2122914383=${formData["entry.2122914383"]}`;
 
@@ -84,7 +83,7 @@ const Form1 = () => {
                 </Card.Header>
 
                 <Card.Body>
-                    {submit ? (null) : (
+                   
                         <Form onSubmit={handleSubmit} target="_self">
 
                             <Form.Group className="mb-3">
@@ -137,10 +136,9 @@ const Form1 = () => {
                                     ref={fileInputRef}
                                     id="documento"
                                     accept=".pdf"
+                                    onChange={handleFileUpload}
                                 />
-                                <Button onClick={handleFileUpload} className="btn-success mt-2">
-                                    Enviar
-                                </Button>
+                                
                             </Form.Group>
 
                             <Form.Group className="mb-3">
@@ -160,7 +158,7 @@ const Form1 = () => {
                             </Button>
 
                         </Form>
-                    )}
+                    
                 </Card.Body>
             </Card >
         </Container >
