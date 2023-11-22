@@ -52,7 +52,7 @@ const Form1 = () => {
             }
 
             try {
-                const response = await fetch('http://fullstackers.com.br:5000/upload', {
+                const response = await fetch('https://fullstackers.com.br:7443/upload', {
                     method: 'POST',
                     body: formData1
                 });

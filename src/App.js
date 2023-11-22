@@ -10,8 +10,8 @@ function App() {
     <Router>
 
       <Routes>
-        <Route exact path='/form1' element={<Form1 />} />
-        <Route exact path='/' element={<Form2 />} />
+        <Route exact path='/' element={<Form1 />} />
+        <Route exact path='/form2' element={<Form2 />} />
       </Routes>
     </Router>
   );
