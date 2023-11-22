@@ -148,6 +148,7 @@ const Form1 = () => {
                                     className="form-control"
                                     name="entry.2122914383"
                                     value={formData["entry.2122914383"]}
+                                    readOnly
                                 />
                             </Form.Group>
 
