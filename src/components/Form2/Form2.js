@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Button, Card, Container, Form, Accordion } from "react-bootstrap";
 import InputMask from 'react-input-mask';
-import './Styles.css';
+import './Form2.css';
 
 const Form1 = () => {
     const [submit, setSubmit] = useState(false);
