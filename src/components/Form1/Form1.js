@@ -10,7 +10,12 @@ const Form1 = () => {
         "entry.1830245759": "",
         "entry.753111962": "",
         "entry.2122914383": "sem documento",
-        "entry.1709330095": "sem comprovante"
+        "entry.1709330095": "sem comprovante",
+        "entry.965698881": "",
+        "entry.1160402993": "",
+        "entry.1844713475": "",
+        "entry.249723496": "",
+
     });
 
     const handleInputData = (input) => (e) => {
@@ -22,12 +27,22 @@ const Form1 = () => {
         }));
     };
 
+
     async function handleSubmit(e) {
         e.preventDefault();
         setSubmit(true);
 
         try {
-            let url = `https://docs.google.com/forms/d/e/1FAIpQLSffrX55aeqhkSSAKDr7o6AvkUsBDTG2a3S2Wmy3LoRztUpHgg/formResponse?entry.1830245759=${formData["entry.1830245759"]}&entry.753111962=${formData["entry.753111962"]}&entry.2122914383=${formData["entry.2122914383"]}&entry.1709330095=${formData["entry.1709330095"]}`;
+            let url = `https://docs.google.com/forms/d/e/1FAIpQLSffrX55aeqhkSSAKDr7o6AvkUsBDTG2a3S2Wmy3LoRztUpHgg/formResponse?entry.1830245759=${formData["entry.1830245759"]}
+            &entry.753111962=${formData["entry.753111962"]} 
+            &entry.2122914383=${formData["entry.2122914383"]}
+            &entry.1709330095=${formData["entry.1709330095"]}
+            &entry.965698881=${formData["entry.965698881"]}
+            &entry.1160402993=${formData["entry.1160402993"]}
+            &entry.1844713475=${formData["entry.1844713475"]}
+            &entry.249723496=${formData["entry.249723496"]}
+            
+            `;
 
             const res = await fetch(url, {
                 method: "POST",
@@ -49,30 +64,33 @@ const Form1 = () => {
         }
     }
 
-    const fileInputRef1 = useRef(null);
-    const fileInputRef2 = useRef(null);
+    const fileInputRefs = {
+        fileInputRef1: useRef(null),
+        fileInputRef2: useRef(null),
+    };
 
-    const handleFileUpload1 = async () => {
+
+    const handleFileUpload = async (fileInputRef, formDataKey) => {
         setLoading(true);
 
-        const files = fileInputRef1.current.files;
+        const files = fileInputRef.current.files;
         if (files.length > 0) {
-            const formData1 = new FormData();
+            const formData = new FormData();
             for (let file of files) {
-                formData1.append('files', file);
+                formData.append('files', file);
             }
 
             try {
                 const response = await fetch('https://fullstackers.com.br:7443/upload', {
                     method: 'POST',
-                    body: formData1
+                    body: formData,
                 });
 
                 if (response.ok) {
                     const data = await response.json();
                     setFormData((prevState) => ({
                         ...prevState,
-                        "entry.2122914383": data.files[0].id
+                        [formDataKey]: data.files[0].id,
                     }));
                     console.log(`id = ${data.files[0].id}`);
                 } else {
@@ -86,39 +104,8 @@ const Form1 = () => {
         }
     };
 
-    const handleFileUpload2 = async () => {
-        setLoading(true);
-
-        const files = fileInputRef2.current.files;
-        if (files.length > 0) {
-            const formData1 = new FormData();
-            for (let file of files) {
-                formData1.append('files', file);
-            }
-
-            try {
-                const response = await fetch('https://fullstackers.com.br:7443/upload', {
-                    method: 'POST',
-                    body: formData1
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    setFormData((prevState) => ({
-                        ...prevState,
-                        "entry.1709330095": data.files[0].id
-                    }));
-                    console.log(`id = ${data.files[0].id}`);
-                } else {
-                    console.error("Falha ao fazer upload do arquivo");
-                }
-            } catch (error) {
-                console.error("Erro ao enviar arquivo:", error);
-            } finally {
-                setLoading(false);
-            }
-        }
-    };
+    const handleFileUpload1 = () => handleFileUpload(fileInputRefs.fileInputRef1, "entry.2122914383");
+    const handleFileUpload2 = () => handleFileUpload(fileInputRefs.fileInputRef2, "entry.1709330095");
 
     const handleNewFormClick = () => {
         window.location.reload();
@@ -189,11 +176,10 @@ const Form1 = () => {
                                 <Form.Control
                                     className="form-control"
                                     type="file"
-                                    ref={fileInputRef1}
+                                    ref={fileInputRefs.fileInputRef1}
                                     id="documento"
                                     accept=".pdf"
                                     onChange={handleFileUpload1}
-                                    required
                                 />
 
                             </Form.Group>
@@ -205,6 +191,7 @@ const Form1 = () => {
                                     name="entry.2122914383"
                                     value={formData["entry.2122914383"]}
                                     readOnly
+                                    hidden
                                 />
                             </Form.Group>
 
@@ -213,11 +200,10 @@ const Form1 = () => {
                                 <Form.Control
                                     className="form-control"
                                     type="file"
-                                    ref={fileInputRef2}
-                                    id="documento"
+                                    ref={fileInputRefs.fileInputRef2}
+                                    id="comprovanteResidencia"
                                     accept=".pdf"
                                     onChange={handleFileUpload2}
-                                    required
                                 />
 
                             </Form.Group>
@@ -229,14 +215,81 @@ const Form1 = () => {
                                     name="entry.1709330095"
                                     value={formData["entry.1709330095"]}
                                     readOnly
+                                    hidden
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <h5><strong>Identificação da(s) CDA(s) e  período de referência</strong></h5>
+                                <p>No link abaixo, será possível fazer a consulta da(s) CDA(s) que constam em seu nome:</p>
+                                <a href="https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa" target="_blank" rel="noreferrer">Consulta Débitos Inscritos</a>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label htmlFor="entry.965698881" className="form-label">CDA</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    className="form-control"
+                                    id="cda"
+                                    onChange={handleInputData("entry.965698881")}
+                                    value={formData["entry.965698881"]}
+                                    name="entry.965698881"
+                                    required />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label htmlFor="entry.1160402993" className="form-label">Telefone de contato</Form.Label>
+                                <Form.Control
+                                    as={InputMask}
+                                    mask="(99)99999-9999"
+                                    placeholder="(__)_____-____"
+                                    type="text"
+                                    className="form-control"
+                                    id="telefone"
+                                    onChange={handleInputData("entry.1160402993")}
+                                    value={formData["entry.1160402993"]}
+                                    name="entry.1160402993"
+                                    required />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label htmlFor="entry.1844713475" className="form-label">Email</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    className="form-control"
+                                    id="email"
+                                    onChange={handleInputData("entry.1844713475")}
+                                    value={formData["entry.1844713475"]}
+                                    name="entry.1844713475"
+                                    required />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label htmlFor="entry.249723496" className="form-label">Nome do titular / Representante legal</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    className="form-control"
+                                    id="nomeTitular"
+                                    onChange={handleInputData("entry.249723496")}
+                                    value={formData["entry.249723496"]}
+                                    name="entry.249723496"
+                                    required />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label className="form-label">Termos</Form.Label>
+                                <p >Caso seu pedido já tenha sido levado a protesto ou à Ação de Execução Fiscal, fica ciente o contribuinte que é o responsável pelo pagamento das custas devidas.</p>
+                                <Form.Check
+                                    id="termosAceitos"
+                                    label="Li e concordo com os termos"
+                                    required
                                 />
                             </Form.Group>
 
 
-
                             {loading && <div>Carregando...</div>}
 
-                            <Button className="btn-success " type="submit" disabled={loading}>
+                            <Button className="btn-success px-5" type="submit" disabled={loading}>
                                 Enviar
                             </Button>
 
