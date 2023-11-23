@@ -180,6 +180,7 @@ const Form1 = () => {
                                     id="documento"
                                     accept=".pdf"
                                     onChange={handleFileUpload1}
+                                    required
                                 />
 
                             </Form.Group>
@@ -204,6 +205,7 @@ const Form1 = () => {
                                     id="comprovanteResidencia"
                                     accept=".pdf"
                                     onChange={handleFileUpload2}
+                                    required
                                 />
 
                             </Form.Group>
