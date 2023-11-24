@@ -97,10 +97,25 @@ const Form1 = () => {
 
   const handleFileUpload1 = () => handleFileUpload(fileInputRefs.fileInputRef1, 'entry.2122914383');
   const handleFileUpload2 = () => handleFileUpload(fileInputRefs.fileInputRef2, 'entry.1709330095');
-  
+
   const handleNewFormClick = () => {
     window.location.reload();
   }
+
+  const applyMask = (value) => {
+    // Remove caracteres não numéricos
+    const cleanedValue = value.replace(/\D/g, '');
+
+    // Decide se é um CPF ou CNPJ com base na quantidade de dígitos
+    const isCpf = cleanedValue.length <= 11;
+
+    // Aplica a máscara de CPF ou CNPJ
+    if (isCpf) {
+      return cleanedValue.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    } else {
+      return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4');
+    }
+  };
 
   return (
     <Container>
@@ -131,17 +146,20 @@ const Form1 = () => {
 
               <Form.Group className='mb-3'>
                 <Form.Label htmlFor='entry.753111962' className='form-label'>CPF / CNPJ </Form.Label>
+                <Form.Text className="text-muted mx-2">
+                  (Somente números)
+                </Form.Text>
+
                 <Form.Control
-                  as={InputMask}
-                  mask='999.999.999-99'
-                  placeholder='___.___.___-__'
-                  type='text'
-                  className='form-control'
-                  id='cpf/cnpj'
-                  onChange={handleInputData('entry.753111962')}
-                  value={formData['entry.753111962']}
-                  name='entry.753111962'
-                  required />
+                  type="text"
+                  className="form-control"
+                  id="cpfCnpj"
+                  onChange={(e) => handleInputData('entry.753111962')(e)}
+                  value={applyMask(formData['entry.753111962'])}
+                  name="entry.753111962"
+                  maxLength={17}
+                  required
+                />
               </Form.Group>
 
               <Form.Group className='mb-3'>
