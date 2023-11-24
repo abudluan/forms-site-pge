@@ -21,7 +21,7 @@ const Form3 = () => {
 
     const handleInputData = (input) => (e) => {
         const { type, checked, value } = e.target;
-    
+
         setFormData((prevState) => ({
             ...prevState,
             [input]: type === 'checkbox' ? (checked ? 'Sim' : 'Não') : value,
@@ -32,15 +32,7 @@ const Form3 = () => {
         e.preventDefault();
         setSubmit(true);
         try {
-            const url = `https://docs.google.com/forms/d/e/1FAIpQLSdfKIoJZ2bW4hxnJf19mVoFj2JasFkxIoWM1e8C9ja1G4quLQ/formResponse?entry.778474845=${formData['entry.778474845']}
-                &entry.751658909=${formData['entry.751658909']} 
-                &entry.1610524789=${formData['entry.1610524789']}
-                &entry.420385343=${formData['entry.420385343']}
-                &entry.15233117=${formData['entry.15233117'] === 'Sim' ? 'Sim' : 'Não'}
-                
-                
-                
-                `;
+            const url = `https://docs.google.com/forms/d/e/1FAIpQLSdfKIoJZ2bW4hxnJf19mVoFj2JasFkxIoWM1e8C9ja1G4quLQ/formResponse?entry.778474845=${formData['entry.778474845']}&entry.751658909=${formData['entry.751658909']}&entry.1610524789=${formData['entry.1610524789']}&entry.420385343=${formData['entry.420385343']}&entry.15233117=${formData['entry.15233117'] === 'Sim' ? 'Sim' : 'Não'}&entry.1279636931=${formData['entry.1279636931'] === 'Sim' ? 'Sim' : 'Não'}&entry.18496374=${formData['entry.18496374'] === 'Sim' ? 'Sim' : 'Não'}&entry.995406817=${formData['entry.995406817'] === 'Sim' ? 'Sim' : 'Não'}&entry.222249182=${formData['entry.222249182'] === 'Sim' ? 'Sim' : 'Não'}&entry.403652388=${formData['entry.403652388']}`;
             const res = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -62,7 +54,6 @@ const Form3 = () => {
 
     const fileInputRefs = {
         fileInputRef1: useRef(null),
-        fileInputRef2: useRef(null),
     };
 
     const handleFileUpload = async (fileInputRef, formDataKey) => {
@@ -99,7 +90,7 @@ const Form3 = () => {
         }
     };
 
-    const handleFileUpload1 = () => handleFileUpload(fileInputRefs.fileInputRef1, '');
+    const handleFileUpload1 = () => handleFileUpload(fileInputRefs.fileInputRef1, 'entry.403652388');
 
 
     const handleNewFormClick = () => {
@@ -200,17 +191,75 @@ const Form3 = () => {
                                     className="mb-3"
                                     name='entry.15233117'
                                     id='entry.15233117'
-                                    label='Alguma descrição para o checkbox'
+                                    label='1- Título protestado pela SEFA (911) * título antigo. Já paguei/parcelei o débito por DAE no portal de serviços da SEFA, mas permaneço protestado.'
                                     checked={formData['entry.15233117'] === 'Sim'}
                                     onChange={handleInputData('entry.15233117')}
                                 />
 
-                            
 
+                                <Form.Check
+                                    className="mb-3"
+                                    name='entry.1279636931'
+                                    id='entry.1279636931'
+                                    label='2 - Título protestado pela PGE (914). Já paguei/parcelei o débito por DAE no cartório de protestos e mesmo assim está ativo no SIAT.'
+                                    checked={formData['entry.1279636931'] === 'Sim'}
+                                    onChange={handleInputData('entry.1279636931')}
+                                />
 
+                                <Form.Check
+                                    className="mb-3"
+                                    name='entry.18496374'
+                                    id='entry.18496374'
+                                    label='3- Título protestado pela PGE (914). Já paguei/parcelei o débito na SEFA e continuo protestado, após cinco dias úteis.'
+                                    checked={formData['entry.18496374'] === 'Sim'}
+                                    onChange={handleInputData('entry.18496374')}
+                                />
+
+                                <Form.Check
+                                    className="mb-3"
+                                    name='entry.995406817'
+                                    id='entry.995406817'
+                                    label='4- Mesmo consultando a dívida no portal de serviços da SEFA, não sei do que se trata esta intimação.'
+                                    checked={formData['entry.995406817'] === 'Sim'}
+                                    onChange={handleInputData('entry.995406817')}
+                                />
+
+                                <Form.Check
+                                    className="mb-3"
+                                    name='entry.222249182'
+                                    id='entry.222249182'
+                                    label='5- Consultei o portal de serviços da SEFA (https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa) e não reconheço este débito.'
+                                    checked={formData['entry.222249182'] === 'Sim'}
+                                    onChange={handleInputData('entry.222249182')}
+                                />
                             </Form.Group>
 
+                            <Form.Group className='mb-3'>
+                                <p><strong>Caso tenha marcado a opção 5 na questão anterior, encaminhe seus motivos e/ou documentos.</strong></p>
+                                <Form.Control
+                                    className='form-control'
+                                    type='file'
+                                    ref={fileInputRefs.fileInputRef1}
+                                    id='documento'
+                                    accept='.pdf'
+                                    onChange={handleFileUpload1}
+                                />
+                            </Form.Group>
 
+                            <Form.Group className='mb-3'>
+                                <Form.Control
+                                    type='text'
+                                    className='form-control'
+                                    name='entry.403652388'
+                                    value={formData['entry.403652388']}
+                                    readOnly
+                                    hidden
+                                />
+                            </Form.Group>
+
+                            <Form.Group className='mb-3'>
+                                <Form.Label className='another'>Outra solicitação</Form.Label>
+                            </Form.Group>
 
                             {loading && <div>Carregando...</div>}
 
