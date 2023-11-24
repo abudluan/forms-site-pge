@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import InputMask from 'react-input-mask';
-import './Form1.css';
+import '../Style/FormStyles.css';
 
 const Form1 = () => {
   const [submit, setSubmit] = useState(false);
@@ -157,7 +157,7 @@ const Form1 = () => {
                   id="cpfCnpj"
                   onChange={(e) => handleInputData('entry.753111962')(e)}
                   onKeyPress={(event) => {
-                    if (!/[0-9]/.test(event.key)) {
+                    if (/\D/.test(event.key)) {
                       event.preventDefault();
                     }
                   }}

@@ -1,21 +1,21 @@
 import React, { useState, useRef } from "react";
 import { Button, Card, Container, Form, Accordion } from "react-bootstrap";
 import InputMask from 'react-input-mask';
-import './Form2.css';
+import '../Style/FormStyles.css';
 
 const Form1 = () => {
     const [submit, setSubmit] = useState(false);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
-        "entry.1667831648": "",
-        "entry.607460007": "",
-        "entry.1248662621": "sem documento",
-        "entry.637644008": "sem titulo",
-        "entry.939867898": "sem DAE",
-        "entry.2060992544": "sem comprovante",
-        "entry.100752253": "",
-        "entry.2022699692": "",
-        "entry.1253515616": ""
+        'entry.1667831648': '',
+        'entry.607460007': '',
+        'entry.1248662621': 'sem documento',
+        'entry.637644008': 'sem titulo',
+        'entry.939867898': 'sem DAE',
+        'entry.2060992544': 'sem comprovante',
+        'entry.100752253': '',
+        'entry.2022699692': '',
+        'entry.1253515616': ''
     });
 
     const handleInputData = (input) => (e) => {
