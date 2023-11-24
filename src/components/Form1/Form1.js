@@ -104,16 +104,17 @@ const Form1 = () => {
 
   const applyMask = (value) => {
     // Remove caracteres não numéricos
-    const cleanedValue = value.replace(/\D/g, '');
+    // const cleanedValue = value.replace(/\D/g, '');
+
 
     // Decide se é um CPF ou CNPJ com base na quantidade de dígitos
-    const isCpf = cleanedValue.length <= 11;
+    const isCpf = value.length <= 11;
 
     // Aplica a máscara de CPF ou CNPJ
     if (isCpf) {
-      return cleanedValue.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+      return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
     } else {
-      return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4');
+      return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4');
     }
   };
 
@@ -155,6 +156,11 @@ const Form1 = () => {
                   className="form-control"
                   id="cpfCnpj"
                   onChange={(e) => handleInputData('entry.753111962')(e)}
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
                   value={applyMask(formData['entry.753111962'])}
                   name="entry.753111962"
                   maxLength={17}
