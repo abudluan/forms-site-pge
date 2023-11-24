@@ -12,7 +12,10 @@ const Form1 = () => {
         "entry.1248662621": "sem documento",
         "entry.637644008": "sem titulo",
         "entry.939867898": "sem DAE",
-        "entry.2060992544": "sem comprovante"
+        "entry.2060992544": "sem comprovante",
+        "entry.100752253": "",
+        "entry.2022699692": "",
+        "entry.1253515616": ""
     });
 
     const handleInputData = (input) => (e) => {
@@ -35,6 +38,10 @@ const Form1 = () => {
             &entry.1248662621=${formData["entry.1248662621"]}
             &entry.637644008=${formData["entry.637644008"]}
             &entry.939867898=${formData["entry.939867898"]}
+            &entry.2060992544=${formData["entry.2060992544"]}
+            &entry.100752253=${formData["entry.100752253"]}
+            &entry.2022699692=${formData["entry.2022699692"]}
+            &entry.1253515616=${formData["entry.1253515616"]}
             
             `;
 
@@ -62,6 +69,7 @@ const Form1 = () => {
         fileInputRef1: useRef(null),
         fileInputRef2: useRef(null),
         fileInputRef3: useRef(null),
+        fileInputRef4: useRef(null),
     };
 
 
@@ -101,29 +109,28 @@ const Form1 = () => {
 
     const handleFileUpload1 = () => handleFileUpload(fileInputRefs.fileInputRef1, "entry.1248662621");
     const handleFileUpload2 = () => handleFileUpload(fileInputRefs.fileInputRef2, "entry.637644008");
-    const handleFileUpload3 = () => handleFileUpload(fileInputRefs.fileInputRef2, "entry.939867898");
+    const handleFileUpload3 = () => handleFileUpload(fileInputRefs.fileInputRef3, "entry.939867898");
+    const handleFileUpload4 = () => handleFileUpload(fileInputRefs.fileInputRef4, "entry.2060992544");
 
     const handleNewFormClick = () => {
         window.location.reload();
     }
 
-    const determineMask = (value) => {
-        // Remove non-numeric characters
-        const cleanedValue = value.replace(/\D/g, "");
+    const applyMask = (value) => {
+        // Remove caracteres não numéricos
+        const cleanedValue = value.replace(/\D/g, '');
 
-        // Determine if it's a CPF or CNPJ based on length
-        return cleanedValue.length <= 11 ? "999.999.999-99" : "99.999.999/9999-99";
+        // Decide se é um CPF ou CNPJ com base na quantidade de dígitos
+        const isCpf = cleanedValue.length <= 11;
+
+        // Aplica a máscara de CPF ou CNPJ
+        if (isCpf) {
+            return cleanedValue.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        } else {
+            return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4');
+        }
     };
 
-    const handleMaskChange = (event) => {
-        const value = event.target.value;
-        const mask = determineMask(value);
-
-        setFormData({
-            ...formData,
-            "entry.607460007": value,
-        });
-    };
 
     return (
         <Container>
@@ -168,19 +175,22 @@ const Form1 = () => {
                                 />
                             </Form.Group>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label htmlFor="entry.607460007" className="form-label">CPF / CNPJ </Form.Label>
+                            <Form.Group className='mb-3'>
+                                <Form.Label htmlFor='entry.607460007' className='form-label'>CPF / CNPJ </Form.Label>
+                                <Form.Text className="text-muted mx-2">
+                                    (Somente números)
+                                </Form.Text>
+
                                 <Form.Control
-                                    as={InputMask}
-                                    mask="999.999.999-99"
-                                    placeholder="___.___.___-__"
                                     type="text"
                                     className="form-control"
-                                    id="cpf/cnpj"
-                                    onChange={handleInputData("entry.607460007")}
-                                    value={formData["entry.607460007"]}
+                                    id="cpfCnpj"
+                                    onChange={(e) => handleInputData('entry.607460007')(e)}
+                                    value={applyMask(formData['entry.607460007'])}
                                     name="entry.607460007"
-                                    required />
+                                    maxLength={17}
+                                    required
+                                />
                             </Form.Group>
 
                             <Form.Group className="mb-3">
@@ -256,6 +266,70 @@ const Form1 = () => {
                                     readOnly
                                     hidden
                                 />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label className="form-label">Comprovante de pagamento</Form.Label>
+                                <Form.Control
+                                    className="form-control"
+                                    type="file"
+                                    ref={fileInputRefs.fileInputRef4}
+                                    id="comprovanteResidencia"
+                                    accept=".pdf"
+                                    onChange={handleFileUpload4}
+                                    required
+                                />
+
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Control
+                                    type="text"
+                                    className="form-control"
+                                    name="entry.2060992544"
+                                    value={formData["entry.2060992544"]}
+                                    readOnly
+                                    hidden
+                                />
+                            </Form.Group>
+
+                            <Form.Group className='mb-3'>
+                                <Form.Label htmlFor='entry.100752253' className='form-label'>Telefone de contato</Form.Label>
+                                <Form.Control
+                                    as={InputMask}
+                                    mask='(99)99999-9999'
+                                    placeholder='(__)_____-____'
+                                    type='text'
+                                    className='form-control'
+                                    id='telefone'
+                                    onChange={handleInputData('entry.100752253')}
+                                    value={formData['entry.100752253']}
+                                    name='entry.100752253'
+                                    required />
+                            </Form.Group>
+
+                            <Form.Group className='mb-3'>
+                                <Form.Label htmlFor='entry.2022699692' className='form-label'>Email</Form.Label>
+                                <Form.Control
+                                    type='email'
+                                    className='form-control'
+                                    id='email'
+                                    onChange={handleInputData('entry.2022699692')}
+                                    value={formData['entry.2022699692']}
+                                    name='entry.2022699692'
+                                    required />
+                            </Form.Group>
+
+                            <Form.Group className='mb-3'>
+                                <Form.Label htmlFor='entry.1253515616' className='form-label'>Nome do titular / Representante legal</Form.Label>
+                                <Form.Control
+                                    type='text'
+                                    className='form-control'
+                                    id='nomeTitular'
+                                    onChange={handleInputData('entry.1253515616')}
+                                    value={formData['entry.1253515616']}
+                                    name='entry.1253515616'
+                                    required />
                             </Form.Group>
 
 
