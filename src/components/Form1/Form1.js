@@ -30,13 +30,13 @@ const Form1 = () => {
     setSubmit(true);
     try {
       const url = `https://docs.google.com/forms/d/e/1FAIpQLSffrX55aeqhkSSAKDr7o6AvkUsBDTG2a3S2Wmy3LoRztUpHgg/formResponse?entry.1830245759=${formData['entry.1830245759']}
-            &entry.753111962=${formData['entry.753111962']} 
-            &entry.2122914383=${formData['entry.2122914383']}
-            &entry.1709330095=${formData['entry.1709330095']}
-            &entry.965698881=${formData['entry.965698881']}
-            &entry.1160402993=${formData['entry.1160402993']}
-            &entry.1844713475=${formData['entry.1844713475']}
-            &entry.249723496=${formData['entry.249723496']}`;
+        &entry.753111962=${formData['entry.753111962']} 
+        &entry.2122914383=${formData['entry.2122914383']}
+        &entry.1709330095=${formData['entry.1709330095']}
+        &entry.965698881=${formData['entry.965698881']}
+        &entry.1160402993=${formData['entry.1160402993']}
+        &entry.1844713475=${formData['entry.1844713475']}
+        &entry.249723496=${formData['entry.249723496']}`;
       const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -45,7 +45,6 @@ const Form1 = () => {
       });
       if (!res.ok) {
         console.error('Falha ao enviar o formulário. Status do erro:', res.status);
-
       }
     }
     catch (error) {
@@ -103,15 +102,8 @@ const Form1 = () => {
   }
 
   const applyMask = (value) => {
-    // Remove caracteres não numéricos
-    // const cleanedValue = value.replace(/\D/g, '');
-
-
-    // Decide se é um CPF ou CNPJ com base na quantidade de dígitos
-    const isCpf = value.length <= 11;
-
-    // Aplica a máscara de CPF ou CNPJ
-    if (isCpf) {
+    // aplica a máscara de CPF ou CNPJ
+    if (value.length <= 11) {
       return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
     } else {
       return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4');
