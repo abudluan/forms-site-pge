@@ -16,11 +16,11 @@
     padding-bottom: 1em;
 }
 
-.form-label{
+.form-title{
     font-weight: bold;
 }
 
-.form-label::after {
+.form-title::after {
     content: " *";
     color: red;
 }

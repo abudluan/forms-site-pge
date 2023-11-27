@@ -16,6 +16,7 @@ const Form3 = () => {
     'entry.18496374': '',
     'entry.995406817': '',
     'entry.222249182': '',
+    'entry.403652388':'Sem documento',
     'entry.1467425328': ''
   });
 
@@ -31,7 +32,7 @@ const Form3 = () => {
     e.preventDefault();
     setSubmit(true);
     try {
-      const url = `https://docs.google.com/forms/d/e/1FAIpQLSdfKIoJZ2bW4hxnJf19mVoFj2JasFkxIoWM1e8C9ja1G4quLQ/formResponse?entry.778474845=${formData['entry.778474845']}&entry.751658909=${formData['entry.751658909']}&entry.1610524789=${formData['entry.1610524789']}&entry.420385343=${formData['entry.420385343']}&entry.15233117=${formData['entry.15233117'] === 'Sim' ? 'Sim' : 'Não'}&entry.1279636931=${formData['entry.1279636931'] === 'Sim' ? 'Sim' : 'Não'}&entry.18496374=${formData['entry.18496374'] === 'Sim' ? 'Sim' : 'Não'}&entry.995406817=${formData['entry.995406817'] === 'Sim' ? 'Sim' : 'Não'}&entry.222249182=${formData['entry.222249182'] === 'Sim' ? 'Sim' : 'Não'}&entry.403652388=${formData['entry.403652388']}`;
+      const url = `https://docs.google.com/forms/d/e/1FAIpQLSdfKIoJZ2bW4hxnJf19mVoFj2JasFkxIoWM1e8C9ja1G4quLQ/formResponse?entry.778474845=${formData['entry.778474845']}&entry.751658909=${formData['entry.751658909']}&entry.1610524789=${formData['entry.1610524789']}&entry.420385343=${formData['entry.420385343']}&entry.15233117=${formData['entry.15233117'] === 'Sim' ? 'Sim' : 'Não'}&entry.1279636931=${formData['entry.1279636931'] === 'Sim' ? 'Sim' : 'Não'}&entry.18496374=${formData['entry.18496374'] === 'Sim' ? 'Sim' : 'Não'}&entry.995406817=${formData['entry.995406817'] === 'Sim' ? 'Sim' : 'Não'}&entry.222249182=${formData['entry.222249182'] === 'Sim' ? 'Sim' : 'Não'}&entry.403652388=${formData['entry.403652388']}&entry.1467425328=${formData['entry.1467425328']}`;
       const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -125,7 +126,7 @@ const Form3 = () => {
           <Card.Body>
             <Form onSubmit={handleSubmit} target='_self'>
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.778474845' className='form-label'>Nome/Razão Social</Form.Label>
+                <Form.Label htmlFor='entry.778474845' className='form-title'>Nome/Razão Social</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
@@ -137,7 +138,7 @@ const Form3 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.751658909' className='form-label'>CPF / CNPJ </Form.Label>
+                <Form.Label htmlFor='entry.751658909' className='form-title'>CPF / CNPJ </Form.Label>
                 <Form.Text className='text-muted mx-2'>
                   (Somente números)
                 </Form.Text>
@@ -155,7 +156,7 @@ const Form3 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1610524789' className='form-label'>Telefone de contato</Form.Label>
+                <Form.Label htmlFor='entry.1610524789' className='form-title'>Telefone de contato</Form.Label>
                 <Form.Control
                   as={InputMask}
                   mask='(99)99999-9999'
@@ -166,11 +167,12 @@ const Form3 = () => {
                   onChange={handleInputData('entry.1610524789')}
                   value={formData['entry.1610524789']}
                   name='entry.1610524789'
-                  required />
+                  required
+                  minLength={14} />
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.420385343' className='form-label'>Email</Form.Label>
+                <Form.Label htmlFor='entry.420385343' className='form-title'>Email</Form.Label>
                 <Form.Control
                   type='email'
                   className='form-control'
@@ -182,7 +184,7 @@ const Form3 = () => {
               </Form.Group>
 
               <Form.Group>
-                <h5><strong>Marque abaixo sua dúvida ou pedido de informação:</strong></h5>
+                <Form.Label><strong>Marque abaixo sua dúvida ou pedido de informação:</strong></Form.Label>
 
                 <Form.Check
                   className='mb-3'
@@ -231,7 +233,7 @@ const Form3 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <p><strong>Caso tenha marcado a opção 5 na questão anterior, encaminhe seus motivos e/ou documentos.</strong></p>
+                <p><strong>Caso tenha marcado a opção 5 na questão anterior, encaminhe seus motivos e/ou documento.</strong></p>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -254,7 +256,16 @@ const Form3 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='another'>Outra solicitação</Form.Label>
+                <Form.Label htmlFor='entry.1467425328'><strong>Outra solicitação</strong></Form.Label>
+                <Form.Control
+                  type='text'
+                  as='textarea'
+                  className='form-control'
+                  name='entry.1467425328'
+                  onChange={handleInputData('entry.1467425328')}
+                  value={formData['entry.1467425328']}
+                  
+                />
               </Form.Group>
               {loading && <div>Carregando...</div>}
               <Button className='btn-success px-5' type='submit' disabled={loading}>

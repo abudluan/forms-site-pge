@@ -126,7 +126,7 @@ const Form1 = () => {
           <Card.Body>
             <Form onSubmit={handleSubmit} target='_self'>
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1830245759' className='form-label'>Nome/Razão Social</Form.Label>
+                <Form.Label htmlFor='entry.1830245759' className='form-title'>Nome/Razão Social</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
@@ -138,7 +138,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.753111962' className='form-label'>CPF / CNPJ </Form.Label>
+                <Form.Label htmlFor='entry.753111962' className='form-title'>CPF / CNPJ </Form.Label>
                 <Form.Text className="text-muted mx-2">
                   (Somente números)
                 </Form.Text>
@@ -176,7 +176,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-label'>Enviar documento</Form.Label>
+                <Form.Label className='form-title'>Enviar documento</Form.Label>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -200,7 +200,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-label'>Comprovante de residência</Form.Label>
+                <Form.Label className='form-title'>Comprovante de residência</Form.Label>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -230,7 +230,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.965698881' className='form-label'>CDA</Form.Label>
+                <Form.Label htmlFor='entry.965698881' className='form-title'>CDA</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
@@ -242,7 +242,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1160402993' className='form-label'>Telefone de contato</Form.Label>
+                <Form.Label htmlFor='entry.1160402993' className='form-title'>Telefone de contato</Form.Label>
                 <Form.Control
                   as={InputMask}
                   mask='(99)99999-9999'
@@ -257,7 +257,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1844713475' className='form-label'>Email</Form.Label>
+                <Form.Label htmlFor='entry.1844713475' className='form-title'>Email</Form.Label>
                 <Form.Control
                   type='email'
                   className='form-control'
@@ -269,7 +269,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.249723496' className='form-label'>Nome do titular / Representante legal</Form.Label>
+                <Form.Label htmlFor='entry.249723496' className='form-title'>Nome do titular / Representante legal</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
@@ -281,7 +281,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-label'>Termos</Form.Label>
+                <Form.Label className='form-title'>Termos</Form.Label>
                 <p >Caso seu pedido já tenha sido levado a protesto ou à Ação de Execução Fiscal, fica ciente o contribuinte que é o responsável pelo pagamento das custas devidas.</p>
                 <Form.Check
                   id='termosAceitos'
