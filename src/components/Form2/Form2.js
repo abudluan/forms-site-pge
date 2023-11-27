@@ -20,9 +20,12 @@ const Form1 = () => {
 
   const handleInputData = (input) => (e) => {
     const { value } = e.target;
+
+    const maskedValue = input === 'entry.607460007' ? applyMask(value) : value;
+
     setFormData((prevState) => ({
       ...prevState,
-      [input]: value
+      [input]: maskedValue
     }));
   };
 
@@ -113,14 +116,14 @@ const Form1 = () => {
     // Remove caracteres não numéricos
     const cleanedValue = value.replace(/\D/g, '');
 
-    // Decide se é um CPF ou CNPJ com base na quantidade de dígitos
+    // Verifica se o valor está formatado como CPF ou CNPJ
     const isCpf = cleanedValue.length <= 11;
 
     // Aplica a máscara de CPF ou CNPJ
     if (isCpf) {
       return cleanedValue.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
     } else {
-      return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4');
+      return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4').substring(0, 17);
     }
   };
 

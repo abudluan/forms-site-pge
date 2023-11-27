@@ -16,15 +16,19 @@ const Form3 = () => {
     'entry.18496374': '',
     'entry.995406817': '',
     'entry.222249182': '',
-    'entry.403652388':'Sem documento',
+    'entry.403652388': 'Sem documento',
     'entry.1467425328': ''
   });
 
   const handleInputData = (input) => (e) => {
     const { type, checked, value } = e.target;
+
+    // Adicione uma verificação para o campo CPF/CNPJ
+    const maskedValue = input === 'entry.751658909' ? applyMask(value) : value;
+
     setFormData((prevState) => ({
       ...prevState,
-      [input]: type === 'checkbox' ? (checked ? 'Sim' : 'Não') : value,
+      [input]: type === 'checkbox' ? (checked ? 'Sim' : 'Não') : maskedValue,
     }));
   };
 
@@ -99,14 +103,14 @@ const Form3 = () => {
     // Remove caracteres não numéricos
     const cleanedValue = value.replace(/\D/g, '');
 
-    // Decide se é um CPF ou CNPJ com base na quantidade de dígitos
+    // Verifica se o valor está formatado como CPF ou CNPJ
     const isCpf = cleanedValue.length <= 11;
 
     // Aplica a máscara de CPF ou CNPJ
     if (isCpf) {
       return cleanedValue.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
     } else {
-      return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4');
+      return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4').substring(0, 17);
     }
   };
 
@@ -264,7 +268,7 @@ const Form3 = () => {
                   name='entry.1467425328'
                   onChange={handleInputData('entry.1467425328')}
                   value={formData['entry.1467425328']}
-                  
+
                 />
               </Form.Group>
               {loading && <div>Carregando...</div>}
