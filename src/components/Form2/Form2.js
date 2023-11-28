@@ -17,6 +17,7 @@ const Form1 = () => {
     'entry.2022699692': '',
     'entry.1253515616': ''
   });
+  const [validated, setValidated] = useState(false);
 
   const handleInputData = (input) => (e) => {
     const { value } = e.target;
@@ -31,10 +32,13 @@ const Form1 = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setSubmit(true);
-
-    try {
-      let url = `https://docs.google.com/forms/d/e/1FAIpQLSdVH3-MqGNHoQOJZCuQ6-n02S9QmGTorYrdOMuob2RInI1MDQ/formResponse?entry.1667831648=${formData['entry.1667831648']}
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+    } else {
+      setSubmit(true);
+      try {
+        let url = `https://docs.google.com/forms/d/e/1FAIpQLSdVH3-MqGNHoQOJZCuQ6-n02S9QmGTorYrdOMuob2RInI1MDQ/formResponse?entry.1667831648=${formData['entry.1667831648']}
         &entry.607460007=${formData['entry.607460007']} 
         &entry.1248662621=${formData['entry.1248662621']}
         &entry.637644008=${formData['entry.637644008']}
@@ -44,22 +48,24 @@ const Form1 = () => {
         &entry.2022699692=${formData['entry.2022699692']}
         &entry.1253515616=${formData['entry.1253515616']}`;
 
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        });
+
+        if (!res.ok) {
+          console.error('Falha ao enviar o formulário. Status do erro:', res.status);
+
         }
-      });
-
-      if (!res.ok) {
-        console.error('Falha ao enviar o formulário. Status do erro:', res.status);
-
+      } catch (error) {
+        console.error('Erro ao fazer a solicitação:', error);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error('Erro ao fazer a solicitação:', error);
-    } finally {
-      setLoading(false);
     }
+    setValidated(true);
   }
 
   const fileInputRefs = {
@@ -184,7 +190,7 @@ const Form1 = () => {
 
           <Card.Body>
 
-            <Form onSubmit={handleSubmit} target='_self'>
+            <Form noValidate validated={validated} onSubmit={handleSubmit} target='_self'>
               <Form.Group className='mb-3'>
                 <Form.Label htmlFor='entry.1667831648' className='form-title'>Nome/Razão Social</Form.Label>
                 <Form.Control
@@ -195,6 +201,9 @@ const Form1 = () => {
                   value={formData['entry.1667831648']}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Informe o nome ou razão social
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -213,6 +222,9 @@ const Form1 = () => {
                   maxLength={17}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Informe o CPF ou CNPJ
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -226,6 +238,9 @@ const Form1 = () => {
                   onChange={handleFileUpload1}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Você deve escolher o arquivo
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -250,6 +265,9 @@ const Form1 = () => {
                   onChange={handleFileUpload2}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Você deve escolher o arquivo
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -274,6 +292,9 @@ const Form1 = () => {
                   onChange={handleFileUpload3}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Você deve escolher o arquivo
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -298,6 +319,9 @@ const Form1 = () => {
                   onChange={handleFileUpload4}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Você deve escolher o arquivo
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -324,6 +348,9 @@ const Form1 = () => {
                   value={formData['entry.100752253']}
                   name='entry.100752253'
                   required />
+                <Form.Control.Feedback type="invalid">
+                  Informe o telefone de contato
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -336,6 +363,9 @@ const Form1 = () => {
                   value={formData['entry.2022699692']}
                   name='entry.2022699692'
                   required />
+                <Form.Control.Feedback type="invalid">
+                  Informe o email
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -348,6 +378,9 @@ const Form1 = () => {
                   value={formData['entry.1253515616']}
                   name='entry.1253515616'
                   required />
+                <Form.Control.Feedback type="invalid">
+                  Informe o nome do titular ou representante legal
+                </Form.Control.Feedback>
               </Form.Group>
               {loading && <div>Carregando...</div>}
               <Button className='btn-success px-5' type='submit' disabled={loading}>

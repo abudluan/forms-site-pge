@@ -211,7 +211,7 @@ const Form1 = () => {
                   required
                 />
                 <Form.Control.Feedback type="invalid">
-                  Você deve escolher o arquivo para envio
+                  Você deve escolher o arquivo
                 </Form.Control.Feedback>
               </Form.Group>
 
@@ -238,7 +238,7 @@ const Form1 = () => {
                   required
                 />
                 <Form.Control.Feedback type="invalid">
-                  Você deve escolher o arquivo para envio
+                  Você deve escolher o arquivo
                 </Form.Control.Feedback>
               </Form.Group>
 
