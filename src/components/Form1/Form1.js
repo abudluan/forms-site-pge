@@ -16,6 +16,7 @@ const Form1 = () => {
     'entry.1844713475': '',
     'entry.249723496': '',
   });
+  const [validated, setValidated] = useState(false);
 
   const handleInputData = (input) => (e) => {
     const { value } = e.target;
@@ -30,9 +31,13 @@ const Form1 = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setSubmit(true);
-    try {
-      const url = `https://docs.google.com/forms/d/e/1FAIpQLSffrX55aeqhkSSAKDr7o6AvkUsBDTG2a3S2Wmy3LoRztUpHgg/formResponse?entry.1830245759=${formData['entry.1830245759']}
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+    } else {
+      setSubmit(true);
+      try {
+        const url = `https://docs.google.com/forms/d/e/1FAIpQLSffrX55aeqhkSSAKDr7o6AvkUsBDTG2a3S2Wmy3LoRztUpHgg/formResponse?entry.1830245759=${formData['entry.1830245759']}
         &entry.753111962=${formData['entry.753111962']} 
         &entry.2122914383=${formData['entry.2122914383']}
         &entry.1709330095=${formData['entry.1709330095']}
@@ -40,22 +45,24 @@ const Form1 = () => {
         &entry.1160402993=${formData['entry.1160402993']}
         &entry.1844713475=${formData['entry.1844713475']}
         &entry.249723496=${formData['entry.249723496']}`;
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        });
+        if (!res.ok) {
+          console.error('Falha ao enviar o formulário. Status do erro:', res.status);
         }
-      });
-      if (!res.ok) {
-        console.error('Falha ao enviar o formulário. Status do erro:', res.status);
+      }
+      catch (error) {
+        console.error('Erro ao fazer a solicitação:', error);
+      }
+      finally {
+        setLoading(false);
       }
     }
-    catch (error) {
-      console.error('Erro ao fazer a solicitação:', error);
-    }
-    finally {
-      setLoading(false);
-    }
+    setValidated(true);
   }
 
   const fileInputRefs = {
@@ -133,7 +140,8 @@ const Form1 = () => {
             <p className='mt-3'>O interessado abaixo identificado, solicita o reconhecimento da prescrição para a extinção do crédito fiscal, com amparo no <strong>Art. 53-B da Lei nº 6.182/1998 c/c Instrução Normativa - IN SEFA nº 18/2020</strong>.</p>
           </Card.Header>
           <Card.Body>
-            <Form onSubmit={handleSubmit} target='_self'>
+            <Form noValidate validated={validated} onSubmit={handleSubmit} target='_self'>
+
               <Form.Group className='mb-3'>
                 <Form.Label htmlFor='entry.1830245759' className='form-title'>Nome/Razão Social</Form.Label>
                 <Form.Control
@@ -144,6 +152,9 @@ const Form1 = () => {
                   value={formData['entry.1830245759']}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Informe o nome ou razão social
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -165,8 +176,12 @@ const Form1 = () => {
                   value={applyMask(formData['entry.753111962'])}
                   name="entry.753111962"
                   maxLength={17}
+                  minLength={14}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Informe o CPF ou CNPJ
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -195,6 +210,9 @@ const Form1 = () => {
                   onChange={handleFileUpload1}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Você deve escolher o arquivo para envio
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -219,6 +237,9 @@ const Form1 = () => {
                   onChange={handleFileUpload2}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Você deve escolher o arquivo para envio
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -248,6 +269,9 @@ const Form1 = () => {
                   value={formData['entry.965698881']}
                   name='entry.965698881'
                   required />
+                <Form.Control.Feedback type="invalid">
+                  Informe a CDA
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -262,7 +286,12 @@ const Form1 = () => {
                   onChange={handleInputData('entry.1160402993')}
                   value={formData['entry.1160402993']}
                   name='entry.1160402993'
-                  required />
+                  required
+                  
+                />
+                <Form.Control.Feedback type="invalid">
+                  Informe o telefone de contato
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -275,6 +304,9 @@ const Form1 = () => {
                   value={formData['entry.1844713475']}
                   name='entry.1844713475'
                   required />
+                <Form.Control.Feedback type="invalid">
+                  Informe o email
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -287,6 +319,9 @@ const Form1 = () => {
                   value={formData['entry.249723496']}
                   name='entry.249723496'
                   required />
+                <Form.Control.Feedback type="invalid">
+                  Informe o nome do titular ou representante legal
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -296,10 +331,14 @@ const Form1 = () => {
                   id='termosAceitos'
                   label='Li e concordo com os termos'
                   required
+                  feedback="Você deve concordar antes de enviar."
+                  feedbackType="invalid"
                 />
               </Form.Group>
 
               {loading && <div>Carregando...</div>}
+
+
 
               <Button className='btn-success px-5' type='submit' disabled={loading}>
                 Enviar
