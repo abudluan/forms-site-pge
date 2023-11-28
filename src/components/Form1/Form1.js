@@ -7,21 +7,21 @@ const Form1 = () => {
   const [submit, setSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    'entry.1830245759': '',
-    'entry.753111962': '',
-    'entry.2122914383': 'sem documento',
-    'entry.1709330095': 'sem comprovante',
-    'entry.965698881': '',
-    'entry.1160402993': '',
-    'entry.1844713475': '',
-    'entry.249723496': '',
+    'entry.1357688810': '',
+    'entry.1453056265': '',
+    'entry.2120982721': 'sem documento',
+    'entry.1742790741': 'sem comprovante',
+    'entry.1259162928': '',
+    'entry.526556254': '',
+    'entry.2009551761': '',
+    'entry.1948919866': '',
   });
   const [validated, setValidated] = useState(false);
 
   const handleInputData = (input) => (e) => {
     const { value } = e.target;
 
-    const maskedValue = input === 'entry.753111962' ? applyMask(value) : value;
+    const maskedValue = input === 'entry.1453056265' ? applyMask(value) : value;
 
     setFormData((prevState) => ({
       ...prevState,
@@ -37,14 +37,14 @@ const Form1 = () => {
     } else {
       setSubmit(true);
       try {
-        const url = `https://docs.google.com/forms/d/e/1FAIpQLSffrX55aeqhkSSAKDr7o6AvkUsBDTG2a3S2Wmy3LoRztUpHgg/formResponse?entry.1830245759=${formData['entry.1830245759']}
-        &entry.753111962=${formData['entry.753111962']} 
-        &entry.2122914383=${formData['entry.2122914383']}
-        &entry.1709330095=${formData['entry.1709330095']}
-        &entry.965698881=${formData['entry.965698881']}
-        &entry.1160402993=${formData['entry.1160402993']}
-        &entry.1844713475=${formData['entry.1844713475']}
-        &entry.249723496=${formData['entry.249723496']}`;
+        const url = `https://docs.google.com/forms/d/e/1FAIpQLSeoHVNNOiWcsFiLQpnu_WXHNyG93mv5j-5J8PgckglYr0KGLg/formResponse?entry.1357688810=${formData['entry.1357688810']}
+        &entry.1453056265=${formData['entry.1453056265']} 
+        &entry.2120982721=${formData['entry.2120982721']}
+        &entry.1742790741=${formData['entry.1742790741']}
+        &entry.1259162928=${formData['entry.1259162928']}
+        &entry.526556254=${formData['entry.526556254']}
+        &entry.2009551761=${formData['entry.2009551761']}
+        &entry.1948919866=${formData['entry.1948919866']}`;
         const res = await fetch(url, {
           method: 'POST',
           headers: {
@@ -104,8 +104,8 @@ const Form1 = () => {
     }
   };
 
-  const handleFileUpload1 = () => handleFileUpload(fileInputRefs.fileInputRef1, 'entry.2122914383');
-  const handleFileUpload2 = () => handleFileUpload(fileInputRefs.fileInputRef2, 'entry.1709330095');
+  const handleFileUpload1 = () => handleFileUpload(fileInputRefs.fileInputRef1, 'entry.2120982721');
+  const handleFileUpload2 = () => handleFileUpload(fileInputRefs.fileInputRef2, 'entry.1742790741');
 
   const handleNewFormClick = () => {
     window.location.reload();
@@ -143,13 +143,13 @@ const Form1 = () => {
             <Form noValidate validated={validated} onSubmit={handleSubmit} target='_self'>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1830245759' className='form-title'>Nome/Razão Social</Form.Label>
+                <Form.Label htmlFor='entry.1357688810' className='form-title'>Nome/Razão Social</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
-                  name='entry.1830245759'
-                  onChange={handleInputData('entry.1830245759')}
-                  value={formData['entry.1830245759']}
+                  name='entry.1357688810'
+                  onChange={handleInputData('entry.1357688810')}
+                  value={formData['entry.1357688810']}
                   required
                 />
                 <Form.Control.Feedback type="invalid">
@@ -158,7 +158,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.753111962' className='form-title'>CPF / CNPJ </Form.Label>
+                <Form.Label htmlFor='entry.1453056265' className='form-title'>CPF / CNPJ </Form.Label>
                 <Form.Text className="text-muted mx-2">
                   (Somente números)
                 </Form.Text>
@@ -167,14 +167,14 @@ const Form1 = () => {
                   type="text"
                   className="form-control"
                   id="cpfCnpj"
-                  onChange={(e) => handleInputData('entry.753111962')(e)}
+                  onChange={(e) => handleInputData('entry.1453056265')(e)}
                   onKeyPress={(event) => {
                     if (/\D/.test(event.key)) {
                       event.preventDefault();
                     }
                   }}
-                  value={applyMask(formData['entry.753111962'])}
-                  name="entry.753111962"
+                  value={applyMask(formData['entry.1453056265'])}
+                  name="entry.1453056265"
                   maxLength={17}
                   minLength={14}
                   required
@@ -219,8 +219,8 @@ const Form1 = () => {
                 <Form.Control
                   type='text'
                   className='form-control'
-                  name='entry.2122914383'
-                  value={formData['entry.2122914383']}
+                  name='entry.2120982721'
+                  value={formData['entry.2120982721']}
                   readOnly
                   hidden
                 />
@@ -246,8 +246,8 @@ const Form1 = () => {
                 <Form.Control
                   type='text'
                   className='form-control'
-                  name='entry.1709330095'
-                  value={formData['entry.1709330095']}
+                  name='entry.1742790741'
+                  value={formData['entry.1742790741']}
                   readOnly
                   hidden
                 />
@@ -260,14 +260,14 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.965698881' className='form-title'>CDA</Form.Label>
+                <Form.Label htmlFor='entry.1259162928' className='form-title'>CDA</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
                   id='cda'
-                  onChange={handleInputData('entry.965698881')}
-                  value={formData['entry.965698881']}
-                  name='entry.965698881'
+                  onChange={handleInputData('entry.1259162928')}
+                  value={formData['entry.1259162928']}
+                  name='entry.1259162928'
                   required />
                 <Form.Control.Feedback type="invalid">
                   Informe a CDA
@@ -275,7 +275,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1160402993' className='form-title'>Telefone de contato</Form.Label>
+                <Form.Label htmlFor='entry.526556254' className='form-title'>Telefone de contato</Form.Label>
                 <Form.Control
                   as={InputMask}
                   mask='(99)99999-9999'
@@ -283,9 +283,9 @@ const Form1 = () => {
                   type='text'
                   className='form-control'
                   id='telefone'
-                  onChange={handleInputData('entry.1160402993')}
-                  value={formData['entry.1160402993']}
-                  name='entry.1160402993'
+                  onChange={handleInputData('entry.526556254')}
+                  value={formData['entry.526556254']}
+                  name='entry.526556254'
                   required
                   
                 />
@@ -295,14 +295,14 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1844713475' className='form-title'>Email</Form.Label>
+                <Form.Label htmlFor='entry.2009551761' className='form-title'>Email</Form.Label>
                 <Form.Control
                   type='email'
                   className='form-control'
                   id='email'
-                  onChange={handleInputData('entry.1844713475')}
-                  value={formData['entry.1844713475']}
-                  name='entry.1844713475'
+                  onChange={handleInputData('entry.2009551761')}
+                  value={formData['entry.2009551761']}
+                  name='entry.2009551761'
                   required />
                 <Form.Control.Feedback type="invalid">
                   Informe o email
@@ -310,14 +310,14 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.249723496' className='form-title'>Nome do titular / Representante legal</Form.Label>
+                <Form.Label htmlFor='entry.1948919866' className='form-title'>Nome do titular / Representante legal</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
                   id='nomeTitular'
-                  onChange={handleInputData('entry.249723496')}
-                  value={formData['entry.249723496']}
-                  name='entry.249723496'
+                  onChange={handleInputData('entry.1948919866')}
+                  value={formData['entry.1948919866']}
+                  name='entry.1948919866'
                   required />
                 <Form.Control.Feedback type="invalid">
                   Informe o nome do titular ou representante legal

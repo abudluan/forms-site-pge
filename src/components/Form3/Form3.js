@@ -7,17 +7,17 @@ const Form3 = () => {
   const [submit, setSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    'entry.778474845': '',
-    'entry.751658909': '',
-    'entry.1610524789': '',
-    'entry.420385343': '',
-    'entry.15233117': '',
-    'entry.1279636931': '',
-    'entry.18496374': '',
-    'entry.995406817': '',
-    'entry.222249182': '',
-    'entry.403652388': 'Sem documento',
-    'entry.1467425328': ''
+    'entry.1357688810': '',
+    'entry.1453056265': '',
+    'entry.526556254': '',
+    'entry.2009551761': '',
+    'entry.501486972': '',
+    'entry.42607275': '',
+    'entry.1571092475': '',
+    'entry.962457213': '',
+    'entry.172516049': '',
+    'entry.1437382390': 'Sem documento',
+    'entry.1264122021': ''
   });
   const [validated, setValidated] = useState(false);
 
@@ -25,7 +25,7 @@ const Form3 = () => {
     const { type, checked, value } = e.target;
 
     // Adicione uma verificação para o campo CPF/CNPJ
-    const maskedValue = input === 'entry.751658909' ? applyMask(value) : value;
+    const maskedValue = input === 'entry.1453056265' ? applyMask(value) : value;
 
     setFormData((prevState) => ({
       ...prevState,
@@ -41,7 +41,7 @@ const Form3 = () => {
     } else {
       setSubmit(true);
       try {
-        const url = `https://docs.google.com/forms/d/e/1FAIpQLSdfKIoJZ2bW4hxnJf19mVoFj2JasFkxIoWM1e8C9ja1G4quLQ/formResponse?entry.778474845=${formData['entry.778474845']}&entry.751658909=${formData['entry.751658909']}&entry.1610524789=${formData['entry.1610524789']}&entry.420385343=${formData['entry.420385343']}&entry.15233117=${formData['entry.15233117'] === 'Sim' ? 'Sim' : 'Não'}&entry.1279636931=${formData['entry.1279636931'] === 'Sim' ? 'Sim' : 'Não'}&entry.18496374=${formData['entry.18496374'] === 'Sim' ? 'Sim' : 'Não'}&entry.995406817=${formData['entry.995406817'] === 'Sim' ? 'Sim' : 'Não'}&entry.222249182=${formData['entry.222249182'] === 'Sim' ? 'Sim' : 'Não'}&entry.403652388=${formData['entry.403652388']}&entry.1467425328=${formData['entry.1467425328']}`;
+        const url = `https://docs.google.com/forms/d/e/1FAIpQLScemrs9YirRz9db08a62Or1HB1nEzqbu_k3pTW1WrGi1UgqOQ/formResponse?entry.1357688810=${formData['entry.1357688810']}&entry.1453056265=${formData['entry.1453056265']}&entry.526556254=${formData['entry.526556254']}&entry.2009551761=${formData['entry.2009551761']}&entry.501486972=${formData['entry.501486972'] === 'Sim' ? 'Sim' : 'Não'}&entry.42607275=${formData['entry.42607275'] === 'Sim' ? 'Sim' : 'Não'}&entry.1571092475=${formData['entry.1571092475'] === 'Sim' ? 'Sim' : 'Não'}&entry.962457213=${formData['entry.962457213'] === 'Sim' ? 'Sim' : 'Não'}&entry.172516049=${formData['entry.172516049'] === 'Sim' ? 'Sim' : 'Não'}&entry.1437382390=${formData['entry.1437382390']}&entry.1264122021=${formData['entry.1264122021']}`;
         const res = await fetch(url, {
           method: 'POST',
           headers: {
@@ -100,7 +100,7 @@ const Form3 = () => {
     }
   };
 
-  const handleFileUpload1 = () => handleFileUpload(fileInputRefs.fileInputRef1, 'entry.403652388');
+  const handleFileUpload1 = () => handleFileUpload(fileInputRefs.fileInputRef1, 'entry.1437382390');
 
   const handleNewFormClick = () => {
     window.location.reload();
@@ -138,13 +138,13 @@ const Form3 = () => {
           <Card.Body>
             <Form noValidate validated={validated} onSubmit={handleSubmit} target='_self'>
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.778474845' className='form-title'>Nome/Razão Social</Form.Label>
+                <Form.Label htmlFor='entry.1357688810' className='form-title'>Nome/Razão Social</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
-                  name='entry.778474845'
-                  onChange={handleInputData('entry.778474845')}
-                  value={formData['entry.778474845']}
+                  name='entry.1357688810'
+                  onChange={handleInputData('entry.1357688810')}
+                  value={formData['entry.1357688810']}
                   required
                 />
                 <Form.Control.Feedback type="invalid">
@@ -153,7 +153,7 @@ const Form3 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.751658909' className='form-title'>CPF / CNPJ </Form.Label>
+                <Form.Label htmlFor='entry.1453056265' className='form-title'>CPF / CNPJ </Form.Label>
                 <Form.Text className='text-muted mx-2'>
                   (Somente números)
                 </Form.Text>
@@ -162,9 +162,9 @@ const Form3 = () => {
                   type='text'
                   className='form-control'
                   id='cpfCnpj'
-                  onChange={(e) => handleInputData('entry.751658909')(e)}
-                  value={applyMask(formData['entry.751658909'])}
-                  name='entry.751658909'
+                  onChange={(e) => handleInputData('entry.1453056265')(e)}
+                  value={applyMask(formData['entry.1453056265'])}
+                  name='entry.1453056265'
                   maxLength={17}
                   required
                 />
@@ -174,7 +174,7 @@ const Form3 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1610524789' className='form-title'>Telefone de contato</Form.Label>
+                <Form.Label htmlFor='entry.526556254' className='form-title'>Telefone de contato</Form.Label>
                 <Form.Control
                   as={InputMask}
                   mask='(99)99999-9999'
@@ -182,9 +182,9 @@ const Form3 = () => {
                   type='text'
                   className='form-control'
                   id='telefone'
-                  onChange={handleInputData('entry.1610524789')}
-                  value={formData['entry.1610524789']}
-                  name='entry.1610524789'
+                  onChange={handleInputData('entry.526556254')}
+                  value={formData['entry.526556254']}
+                  name='entry.526556254'
                   required
                   minLength={14} />
                 <Form.Control.Feedback type="invalid">
@@ -193,14 +193,14 @@ const Form3 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.420385343' className='form-title'>Email</Form.Label>
+                <Form.Label htmlFor='entry.2009551761' className='form-title'>Email</Form.Label>
                 <Form.Control
                   type='email'
                   className='form-control'
                   id='email'
-                  onChange={handleInputData('entry.420385343')}
-                  value={formData['entry.420385343']}
-                  name='entry.420385343'
+                  onChange={handleInputData('entry.2009551761')}
+                  value={formData['entry.2009551761']}
+                  name='entry.2009551761'
                   required />
                 <Form.Control.Feedback type="invalid">
                   Informe o email
@@ -212,47 +212,47 @@ const Form3 = () => {
 
                 <Form.Check
                   className='mb-3'
-                  name='entry.15233117'
-                  id='entry.15233117'
+                  name='entry.501486972'
+                  id='entry.501486972'
                   label='1- Título protestado pela SEFA (911) * título antigo. Já paguei/parcelei o débito por DAE no portal de serviços da SEFA, mas permaneço protestado.'
-                  checked={formData['entry.15233117'] === 'Sim'}
-                  onChange={handleInputData('entry.15233117')}
+                  checked={formData['entry.501486972'] === 'Sim'}
+                  onChange={handleInputData('entry.501486972')}
                 />
 
                 <Form.Check
                   className='mb-3'
-                  name='entry.1279636931'
-                  id='entry.1279636931'
+                  name='entry.42607275'
+                  id='entry.42607275'
                   label='2 - Título protestado pela PGE (914). Já paguei/parcelei o débito por DAE no cartório de protestos e mesmo assim está ativo no SIAT.'
-                  checked={formData['entry.1279636931'] === 'Sim'}
-                  onChange={handleInputData('entry.1279636931')}
+                  checked={formData['entry.42607275'] === 'Sim'}
+                  onChange={handleInputData('entry.42607275')}
                 />
 
                 <Form.Check
                   className='mb-3'
-                  name='entry.18496374'
-                  id='entry.18496374'
+                  name='entry.1571092475'
+                  id='entry.1571092475'
                   label='3- Título protestado pela PGE (914). Já paguei/parcelei o débito na SEFA e continuo protestado, após cinco dias úteis.'
-                  checked={formData['entry.18496374'] === 'Sim'}
-                  onChange={handleInputData('entry.18496374')}
+                  checked={formData['entry.1571092475'] === 'Sim'}
+                  onChange={handleInputData('entry.1571092475')}
                 />
 
                 <Form.Check
                   className='mb-3'
-                  name='entry.995406817'
-                  id='entry.995406817'
+                  name='entry.962457213'
+                  id='entry.962457213'
                   label='4- Mesmo consultando a dívida no portal de serviços da SEFA, não sei do que se trata esta intimação.'
-                  checked={formData['entry.995406817'] === 'Sim'}
-                  onChange={handleInputData('entry.995406817')}
+                  checked={formData['entry.962457213'] === 'Sim'}
+                  onChange={handleInputData('entry.962457213')}
                 />
 
                 <Form.Check
                   className='mb-3'
-                  name='entry.222249182'
-                  id='entry.222249182'
+                  name='entry.172516049'
+                  id='entry.172516049'
                   label='5- Consultei o portal de serviços da SEFA (https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa) e não reconheço este débito.'
-                  checked={formData['entry.222249182'] === 'Sim'}
-                  onChange={handleInputData('entry.222249182')}
+                  checked={formData['entry.172516049'] === 'Sim'}
+                  onChange={handleInputData('entry.172516049')}
                 />
               </Form.Group>
 
@@ -272,22 +272,22 @@ const Form3 = () => {
                 <Form.Control
                   type='text'
                   className='form-control'
-                  name='entry.403652388'
-                  value={formData['entry.403652388']}
+                  name='entry.1437382390'
+                  value={formData['entry.1437382390']}
                   readOnly
                   hidden
                 />
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1467425328'><strong>Outra solicitação</strong></Form.Label>
+                <Form.Label htmlFor='entry.1264122021'><strong>Outra solicitação</strong></Form.Label>
                 <Form.Control
                   type='text'
                   as='textarea'
                   className='form-control'
-                  name='entry.1467425328'
-                  onChange={handleInputData('entry.1467425328')}
-                  value={formData['entry.1467425328']}
+                  name='entry.1264122021'
+                  onChange={handleInputData('entry.1264122021')}
+                  value={formData['entry.1264122021']}
 
                 />
               </Form.Group>
