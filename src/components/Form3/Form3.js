@@ -19,6 +19,7 @@ const Form3 = () => {
     'entry.403652388': 'Sem documento',
     'entry.1467425328': ''
   });
+  const [validated, setValidated] = useState(false);
 
   const handleInputData = (input) => (e) => {
     const { type, checked, value } = e.target;
@@ -34,25 +35,31 @@ const Form3 = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setSubmit(true);
-    try {
-      const url = `https://docs.google.com/forms/d/e/1FAIpQLSdfKIoJZ2bW4hxnJf19mVoFj2JasFkxIoWM1e8C9ja1G4quLQ/formResponse?entry.778474845=${formData['entry.778474845']}&entry.751658909=${formData['entry.751658909']}&entry.1610524789=${formData['entry.1610524789']}&entry.420385343=${formData['entry.420385343']}&entry.15233117=${formData['entry.15233117'] === 'Sim' ? 'Sim' : 'Não'}&entry.1279636931=${formData['entry.1279636931'] === 'Sim' ? 'Sim' : 'Não'}&entry.18496374=${formData['entry.18496374'] === 'Sim' ? 'Sim' : 'Não'}&entry.995406817=${formData['entry.995406817'] === 'Sim' ? 'Sim' : 'Não'}&entry.222249182=${formData['entry.222249182'] === 'Sim' ? 'Sim' : 'Não'}&entry.403652388=${formData['entry.403652388']}&entry.1467425328=${formData['entry.1467425328']}`;
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+    } else {
+      setSubmit(true);
+      try {
+        const url = `https://docs.google.com/forms/d/e/1FAIpQLSdfKIoJZ2bW4hxnJf19mVoFj2JasFkxIoWM1e8C9ja1G4quLQ/formResponse?entry.778474845=${formData['entry.778474845']}&entry.751658909=${formData['entry.751658909']}&entry.1610524789=${formData['entry.1610524789']}&entry.420385343=${formData['entry.420385343']}&entry.15233117=${formData['entry.15233117'] === 'Sim' ? 'Sim' : 'Não'}&entry.1279636931=${formData['entry.1279636931'] === 'Sim' ? 'Sim' : 'Não'}&entry.18496374=${formData['entry.18496374'] === 'Sim' ? 'Sim' : 'Não'}&entry.995406817=${formData['entry.995406817'] === 'Sim' ? 'Sim' : 'Não'}&entry.222249182=${formData['entry.222249182'] === 'Sim' ? 'Sim' : 'Não'}&entry.403652388=${formData['entry.403652388']}&entry.1467425328=${formData['entry.1467425328']}`;
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        });
+        if (!res.ok) {
+          console.error('Falha ao enviar o formulário. Status do erro:', res.status);
         }
-      });
-      if (!res.ok) {
-        console.error('Falha ao enviar o formulário. Status do erro:', res.status);
+      }
+      catch (error) {
+        console.error('Erro ao fazer a solicitação:', error);
+      }
+      finally {
+        setLoading(false);
       }
     }
-    catch (error) {
-      console.error('Erro ao fazer a solicitação:', error);
-    }
-    finally {
-      setLoading(false);
-    }
+    setValidated(true);
   }
 
   const fileInputRefs = {
@@ -127,8 +134,9 @@ const Form3 = () => {
             <h3 className='mt-2'><strong>Solicitação de Reconhecimento de Prescrição Administrativa de Débito Fiscal Inscrito em Dívida Ativa</strong></h3>
             <p className='mt-3'>O interessado abaixo identificado, solicita o reconhecimento da prescrição para a extinção do crédito fiscal, com amparo no <strong>Art. 53-B da Lei nº 6.182/1998 c/c Instrução Normativa - IN SEFA nº 18/2020</strong>.</p>
           </Card.Header>
+          
           <Card.Body>
-            <Form onSubmit={handleSubmit} target='_self'>
+            <Form noValidate validated={validated} onSubmit={handleSubmit} target='_self'>
               <Form.Group className='mb-3'>
                 <Form.Label htmlFor='entry.778474845' className='form-title'>Nome/Razão Social</Form.Label>
                 <Form.Control
@@ -139,6 +147,9 @@ const Form3 = () => {
                   value={formData['entry.778474845']}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Informe o nome ou razão social
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -157,6 +168,9 @@ const Form3 = () => {
                   maxLength={17}
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Informe o CPF ou CNPJ
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -173,6 +187,9 @@ const Form3 = () => {
                   name='entry.1610524789'
                   required
                   minLength={14} />
+                <Form.Control.Feedback type="invalid">
+                  Informe o telefone de contato
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className='mb-3'>
@@ -185,6 +202,9 @@ const Form3 = () => {
                   value={formData['entry.420385343']}
                   name='entry.420385343'
                   required />
+                <Form.Control.Feedback type="invalid">
+                  Informe o email
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group>
