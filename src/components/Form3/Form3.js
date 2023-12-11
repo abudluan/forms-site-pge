@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../Style/FormStyles.css';
 import { Form, Card, Button, Container } from 'react-bootstrap';
 import InputMask from 'react-input-mask';
@@ -20,6 +20,15 @@ const Form3 = () => {
     'entry.1264122021': ''
   });
   const [validated, setValidated] = useState(false);
+  const [scrollToTop, setScrollToTop] = useState(false);
+
+  useEffect(() => {
+    if (scrollToTop) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setScrollToTop(false);
+    }
+  }, [scrollToTop]);
+
 
   const handleInputData = (input) => (e) => {
     const { type, checked, value } = e.target;
@@ -57,6 +66,7 @@ const Form3 = () => {
       }
       finally {
         setLoading(false);
+        setScrollToTop(true);
       }
     }
     setValidated(true);
@@ -134,7 +144,7 @@ const Form3 = () => {
             <h3 className='mt-2'><strong>Solicitação de Reconhecimento de Prescrição Administrativa de Débito Fiscal Inscrito em Dívida Ativa</strong></h3>
             <p className='mt-3'>O interessado abaixo identificado, solicita o reconhecimento da prescrição para a extinção do crédito fiscal, com amparo no <strong>Art. 53-B da Lei nº 6.182/1998 c/c Instrução Normativa - IN SEFA nº 18/2020</strong>.</p>
           </Card.Header>
-          
+
           <Card.Body>
             <Form noValidate validated={validated} onSubmit={handleSubmit} target='_self'>
               <Form.Group className='mb-3'>

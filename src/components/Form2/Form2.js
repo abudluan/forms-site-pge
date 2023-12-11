@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button, Card, Container, Form, Accordion } from 'react-bootstrap';
 import InputMask from 'react-input-mask';
 import '../Style/FormStyles.css';
@@ -18,6 +18,15 @@ const Form1 = () => {
     'entry.1948919866': ''
   });
   const [validated, setValidated] = useState(false);
+  const [scrollToTop, setScrollToTop] = useState(false);
+
+  useEffect(() => {
+    if (scrollToTop) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setScrollToTop(false);
+    }
+  }, [scrollToTop]);
+
 
   const handleInputData = (input) => (e) => {
     const { value } = e.target;
@@ -63,6 +72,7 @@ const Form1 = () => {
         console.error('Erro ao fazer a solicitação:', error);
       } finally {
         setLoading(false);
+        setScrollToTop(true);
       }
     }
     setValidated(true);
