@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import '../Style/FormStyles.css';
 import { Form, Card, Button, Container } from 'react-bootstrap';
 import InputMask from 'react-input-mask';
@@ -20,15 +20,6 @@ const Form3 = () => {
     'entry.1264122021': ''
   });
   const [validated, setValidated] = useState(false);
-  const [scrollToTop, setScrollToTop] = useState(false);
-
-  useEffect(() => {
-    if (scrollToTop) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setScrollToTop(false);
-    }
-  }, [scrollToTop]);
-
 
   const handleInputData = (input) => (e) => {
     const { type, checked, value } = e.target;
@@ -66,7 +57,6 @@ const Form3 = () => {
       }
       finally {
         setLoading(false);
-        setScrollToTop(true);
       }
     }
     setValidated(true);

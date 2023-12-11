@@ -21,7 +21,7 @@
 }
 
 .form-title::after {
-    content: " *";
+    content: "*";
     color: red;
 }
 
