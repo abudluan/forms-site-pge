@@ -288,7 +288,6 @@ const Form1 = () => {
                   value={formData['entry.526556254']}
                   name='entry.526556254'
                   required
-
                 />
                 <Form.Control.Feedback type="invalid">
                   Informe o telefone de contato
@@ -327,7 +326,9 @@ const Form1 = () => {
 
               <Form.Group className='mb-3'>
                 <Form.Label className='form-title'>Termos</Form.Label>
-                <p >Caso seu pedido já tenha sido levado a protesto ou à Ação de Execução Fiscal, fica ciente o contribuinte que é o responsável pelo pagamento das custas devidas.</p>
+                <p>Caso seu pedido já tenha sido levado a protesto ou à Ação de Execução Fiscal, fica ciente o contribuinte que é o responsável pelo pagamento das custas devidas.</p>
+                <p>Declaro estar ciente de que estou fornecendo voluntariamente meus dados pessoais, incluindo, mas não se limitando a, nome, CPF, endereço e informações financeiras, à Fazenda Pública Estadual. Reconheço que esses dados serão utilizados exclusivamente para fins de administração tributária, fiscalização, arrecadação, e demais procedimentos relacionados à gestão fiscal do Estado.</p>
+                <p>Estou ciente de que meus dados serão tratados em conformidade com as disposições da Lei Geral de Proteção de Dados (Lei nº 13.709/2018) e que tenho o direito de solicitar acesso, correção, limitação ou exclusão dos meus dados pessoais a qualquer momento, conforme previsto em lei, bem como dou meu consentimento livre, expresso e informado para que a Fazenda Pública Estadual processe meus dados pessoais conforme descrito acima.</p>
                 <Form.Check
                   id='termosAceitos'
                   label='Li e concordo com os termos'
@@ -338,9 +339,6 @@ const Form1 = () => {
               </Form.Group>
 
               {loading && <div>Carregando...</div>}
-
-
-
               <Button className='btn-success px-5' type='submit' disabled={loading}>
                 Enviar
               </Button>

@@ -288,7 +288,18 @@ const Form3 = () => {
                   name='entry.1264122021'
                   onChange={handleInputData('entry.1264122021')}
                   value={formData['entry.1264122021']}
-
+                />
+              </Form.Group>
+              <Form.Group className='mb-3'>
+                <Form.Label className='form-title'>Termos</Form.Label>
+                <p>Declaro estar ciente de que estou fornecendo voluntariamente meus dados pessoais, incluindo, mas não se limitando a, nome, CPF, endereço e informações financeiras, à Fazenda Pública Estadual. Reconheço que esses dados serão utilizados exclusivamente para fins de administração tributária, fiscalização, arrecadação, e demais procedimentos relacionados à gestão fiscal do Estado.</p>
+                <p>Estou ciente de que meus dados serão tratados em conformidade com as disposições da Lei Geral de Proteção de Dados (Lei nº 13.709/2018) e que tenho o direito de solicitar acesso, correção, limitação ou exclusão dos meus dados pessoais a qualquer momento, conforme previsto em lei, bem como dou meu consentimento livre, expresso e informado para que a Fazenda Pública Estadual processe meus dados pessoais conforme descrito acima.</p>
+                <Form.Check
+                  id='termosAceitos'
+                  label='Li e concordo com os termos'
+                  required
+                  feedback="Você deve concordar antes de enviar."
+                  feedbackType="invalid"
                 />
               </Form.Group>
               {loading && <div>Carregando...</div>}
