@@ -146,40 +146,41 @@ const Form1 = () => {
             <h3 className='mt-2'><strong>Solicitação de Emissão de Carta de Anuência</strong></h3>
             <Accordion defaultActiveKey={['0']} alwaysOpen>
               <Accordion.Item eventKey='0'>
-                <Accordion.Header><strong>Leia com atenção:</strong></Accordion.Header>
+                <Accordion.Header><strong>Leia com atenção antes de fazer o seu pedido:</strong></Accordion.Header>
                 <Accordion.Body>
                   <strong>1</strong> - De acordo com o Termo de
                   Cooperação 25/2018 firmado entre o Estado, Tribunal de Justiça e Cartórios de
-                  Protestos, o sistema de protestos é
+                  Protestos, <b>o sistema de protestos é
                   feito através de integração automática entre as instituições, isto é, por
-                  sistema eletrônico.
+                  sistema eletrônico.</b>
                 </Accordion.Body>
 
                 <Accordion.Body>
-                  <strong>2</strong> - Segundo a Lei de Protestos (Lei
-                  Federal 9.492, de 1997), uma vez que o título foi remetido para o cartório de
-                  protestos, o pagamento/parcelamento deverá ser feito exclusiva e diretamente no cartório que enviou a intimação (tanto do
-                  crédito fiscal quanto das custas cartorárias). Não aceite que ninguém mais lhe
-                  cobre por este serviço.
+                  <strong>2</strong> - Segundo a Lei de Protestos (Lei Federal 9.492, de 1997), uma vez que o título
+                   foi remetido para o cartório de protestos, o pagamento deverá ser feito exclusiva e diretamente
+                    no cartório que enviou a intimação (tanto do crédito fiscal quanto das custas cartorárias). 
+                    Não aceite que ninguém mais lhe cobre por este serviço. Para o parcelamento, após o período de três
+                     dias úteis, o contribuinte deverá parcelar o seu débito direto no site eletrônico da SEFA,
+                      por meio do link: <a href="https://www.sefa.pa.gov.br/" target="_blank">https://www.sefa.pa.gov.br/</a>
                 </Accordion.Body>
 
                 <Accordion.Body>
-                  <strong>3</strong> - As cartas de anuência do apresentante 914 (Procuradoria-Geral do
-                  Estado) são emitidas automaticamente após o parcelamento ou pagamento, no
-                  prazo de três à cinco dias úteis. Este prazo se dá devido à necessidade de
-                  compensação bancária.  Nesta situação,
-                  não é preciso fazer este pedido, pois a carta de anuência chegará automaticamente
-                  ao cartório de protestos e ficará armazenada na CENPROT (Central de Protestos).
+                  <strong>3</strong> - As cartas de anuência do apresentante 914 (Procuradoria-Geral do Estado) são 
+                  emitidas automaticamente após o parcelamento ou pagamento, no prazo de três à cinco dias úteis. 
+                  Este prazo se dá devido à necessidade de compensação bancária. Nesta situação, não é preciso fazer 
+                  este pedido, pois a carta de anuência chegará automaticamente ao cartório de protestos e ficará 
+                  armazenada na CENPROT (Central de Protestos). O contribuinte, então, deverá ter feito o pagamento 
+                  das custas cartorárias, direto no cartório de protestos, para a baixa definitiva.
                 </Accordion.Body>
 
                 <Accordion.Body>
-                  <strong>4</strong> - As cartas de anuência para o apresentante 911 (Secretaria de Estado de
-                  Fazenda), ou seja, protestos anteriores à maio de 2022, deverão utilizar
+                  <strong>4</strong> - As cartas de anuência para <b>o apresentante 911 (Secretaria de Estado de
+                  Fazenda)</b>, ou seja, protestos anteriores à maio de 2022, deverão utilizar
                   este requerimento.
                 </Accordion.Body>
 
                 <Accordion.Body>
-                  <strong>5</strong> - Utilize este requerimento, também, caso tenha passado o prazo do item 3,
+                  <strong>5</strong> - <b>Utilize este requerimento</b>, também, caso tenha passado o prazo do item 3,
                   pois como toda plataforma que depende da internet e de integrações entre
                   sistemas, pode em alguns momentos apresentar instabilidades.
                 </Accordion.Body>

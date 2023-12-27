@@ -131,8 +131,8 @@ const Form3 = () => {
       ) : (
         <Card className='mt-4'>
           <Card.Header>
-            <h3 className='mt-2'><strong>Solicitação de Reconhecimento de Prescrição Administrativa de Débito Fiscal Inscrito em Dívida Ativa</strong></h3>
-            <p className='mt-3'>O interessado abaixo identificado, solicita o reconhecimento da prescrição para a extinção do crédito fiscal, com amparo no <strong>Art. 53-B da Lei nº 6.182/1998 c/c Instrução Normativa - IN SEFA nº 18/2020</strong>.</p>
+            <h3 className='mt-2'><strong>Pedido de Informação</strong></h3>
+            
           </Card.Header>
 
           <Card.Body>
@@ -208,7 +208,26 @@ const Form3 = () => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label><strong>Marque abaixo sua dúvida ou pedido de informação:</strong></Form.Label>
+                <Form.Label>
+                <p><strong>Leia antes com atenção:</strong></p>
+                Para PAGAR o débito: <br/>
+                Pague ao cartório de protestos, passados 3 dias úteis, pode pagar o débito 
+                  no site da SEFA, e depois pagar no cartório as custas:<br/>
+                ● Em cota única: <a href="https://app.sefa.pa.gov.br/emissao-dae-avulso/#/inicio" target="_blank" >https://app.sefa.pa.gov.br/emissao-dae-avulso/#/inicio</a><br/>
+                ● Parcelamento: <a href="https://app.sefa.pa.gov.br/parcelamento/#/pedido" target="_blank" >https://app.sefa.pa.gov.br/parcelamento/#/pedido</a><br/>
+                ● Para saber quais os débitos estão vinculados ao CPF/CNPJ: <a href="https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa" target="_blank" >https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa</a><br/>
+                ● Para informações quanto à placa do carro:<br/>
+                1- acessar o site <a href="https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa" target="_blank" >https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa</a><br/>
+                2- Preencher o campo Identificação com o CPF/CNPJ, clicar em <b>"NÃO SOU ROBÔ"</b>, clicar em <b>CONSULTAR</b>;<br/>
+                3- Em Resultado Consolidado marcar o nome do contribuinte e clicar em <b>AVANÇAR</b>;<br/>
+                4- Na página com os dados dos débitos, selecionar o débito e clicar em Detalhar. Tela de Detalhe com as informações específicas dos
+                débitos serão exibidas.<br/><br/>
+                <p>Caso o débito seja de IPVA e você não esteja mais com o veículo é fundamental sempre comunicar ao DETRAN porque, enquanto isto não for feito, o débito continuará sendo gerado com seus dados.
+                Dirija-se ao DETRAN para regularizar sua situação.<br/>
+                Para contatar o DETRAN use o telefone 154 ou acesso o link: <a href="https://www.detran.pa.gov.br/index_.php" target="_blank" >https://www.detran.pa.gov.br/index_.php</a> (aba veículos).<br/><br/>
+                <b>OUTRAS SITUAÇÕES</b><br/>
+                Obrigatória a apresentação de boletim de ocorrência, certidão de óbito ou documento judicial.<br/></p>
+                <strong>Caso sua dúvida permaneça mesmo com as orientações acima, marque, abaixo, sua dúvida ou pedido de informação:</strong></Form.Label>
 
                 <Form.Check
                   className='mb-3'
