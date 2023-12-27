@@ -257,7 +257,10 @@ const Form1 = () => {
               <Form.Group className='mb-3'>
                 <h5><strong>Identificação da(s) CDA(s) e  período de referência</strong></h5>
                 <p>No link abaixo, será possível fazer a consulta da(s) CDA(s) que constam em seu nome:</p>
-                <a href='https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa' target='_blank' rel='noreferrer'>Consulta Débitos Inscritos</a>
+                <a href='https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa' target='_blank' 
+                rel='noreferrer'>Consulta Débitos Inscritos</a>
+                <p>Ao preencher as CDAS, abaixo, favor levar em consideração que a prescrição ocorre após 5 (cinco) anos do débito e 
+                  desde que não tenha havido causa interruptiva, como parcelamento, defesa em AINF e citação válida em execução fiscal.</p>
               </Form.Group>
 
               <Form.Group className='mb-3'>
