@@ -259,7 +259,7 @@ const Form1 = () => {
                 <p>No link abaixo, será possível fazer a consulta da(s) CDA(s) que constam em seu nome:</p>
                 <a href='https://app.sefa.pa.gov.br/consulta-divida-ativa/#/consultar-divida-ativa' target='_blank' 
                 rel='noreferrer'>Consulta Débitos Inscritos</a>
-                <p>Ao preencher as CDAS, abaixo, favor levar em consideração que a prescrição ocorre após 5 (cinco) anos do débito e 
+                <p>Ao preencher as CDAS, abaixo, favor levar em consideração que a prescrição ocorre após 5 (CINCO) anos do débito e 
                   desde que não tenha havido causa interruptiva, como parcelamento, defesa em AINF e citação válida em execução fiscal.</p>
               </Form.Group>
 
