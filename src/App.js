@@ -14,6 +14,8 @@ function App() {
         <Route exact path='/' element={<Form1 />} />
         <Route exact path='/form2' element={<Form2 />} />
         <Route exact path='/form3' element={<Form3 />} />
+        <Route exact path='/form4' element={<Form4 />} />
+        
       </Routes>
     </Router>
   );

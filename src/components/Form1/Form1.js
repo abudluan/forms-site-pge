@@ -56,7 +56,7 @@ const Form1 = () => {
         }
       }
       catch (error) {
-        console.error('Erro ao fazer a solicitação:', error);
+        console.error('Ocorreu o seguinte erro ao fazer a solicitação:', error);
       }
       finally {
         setLoading(false);
