@@ -28,8 +28,7 @@ const Form4 = () => {
     } else {
       setSubmit(true);
       try {
-        const url = `https://docs.google.com/forms/d/e/1FAIpQLSfey3UPctkhqlQjoQM8z7ckO2VW9q4Lu0fU_CA_ZaJDLjI6bQ/viewform?usp=pp_url
-        &entry.1665899281=${formData['entry.1665899281']}`;
+        const url = `https://docs.google.com/forms/d/e/1FAIpQLSfey3UPctkhqlQjoQM8z7ckO2VW9q4Lu0fU_CA_ZaJDLjI6bQ/formResponse?&entry.1665899281=${formData['entry.1665899281']}`;
         const res = await fetch(url, {
           method: 'POST',
           headers: {
