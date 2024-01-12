@@ -41,7 +41,7 @@ const Form3 = () => {
     } else {
       setSubmit(true);
       try {
-        const url = `https://docs.google.com/forms/d/e/1FAIpQLScemrs9YirRz9db08a62Or1HB1nEzqbu_k3pTW1WrGi1UgqOQ/formResponse?entry.1357688810=${formData['entry.1357688810']}&entry.1453056265=${formData['entry.1453056265']}&entry.526556254=${formData['entry.526556254']}&entry.2009551761=${formData['entry.2009551761']}&entry.501486972=${formData['entry.501486972'] === 'Sim' ? 'Sim' : 'Não'}&entry.42607275=${formData['entry.42607275'] === 'Sim' ? 'Sim' : 'Não'}&entry.1571092475=${formData['entry.1571092475'] === 'Sim' ? 'Sim' : 'Não'}&entry.962457213=${formData['entry.962457213'] === 'Sim' ? 'Sim' : 'Não'}&entry.172516049=${formData['entry.172516049'] === 'Sim' ? 'Sim' : 'Não'}&entry.1437382390=${formData['entry.1437382390']}&entry.1264122021=${formData['entry.1264122021']}`;
+        const url = `https://docs.google.com/forms/d/e/1FAIpQLScemrs9YirRz9db08a62Or1HB1nEzqbu_k3pTW1WrGi1UgqOQ/formResponse?&entry.1357688810=${formData['entry.1357688810']}&entry.1453056265=${formData['entry.1453056265']}&entry.526556254=${formData['entry.526556254']}&entry.2009551761=${formData['entry.2009551761']}&entry.501486972=${formData['entry.501486972'] === 'Sim' ? 'Sim' : 'Não'}&entry.42607275=${formData['entry.42607275'] === 'Sim' ? 'Sim' : 'Não'}&entry.1571092475=${formData['entry.1571092475'] === 'Sim' ? 'Sim' : 'Não'}&entry.962457213=${formData['entry.962457213'] === 'Sim' ? 'Sim' : 'Não'}&entry.172516049=${formData['entry.172516049'] === 'Sim' ? 'Sim' : 'Não'}&entry.1437382390=${formData['entry.1437382390']}&entry.1264122021=${formData['entry.1264122021']}`;
         const res = await fetch(url, {
           method: 'POST',
           headers: {
