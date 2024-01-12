@@ -75,9 +75,11 @@ const Form4 = () => {
     const isCpf = cleanedValue.length <= 11;
 
     // Aplica a máscara de CPF ou CNPJ conforme o comprimento.
-    return isCpf
-      ? cleanedValue.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
-      : cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4').substring(0, 17);
+    if (isCpf) {
+      return cleanedValue.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    } else {
+      return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4-');
+    }
   };
 
   // Renderiza o componente.
