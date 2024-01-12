@@ -84,13 +84,8 @@ const Form4 = () => {
   return (
     <Container>
       {submit ? (
-        // Exibe a mensagem de sucesso após o envio bem-sucedido do formulário.
-        <Card className='mt-4 pb-3 pt-3'>
-          <h2 className='text-center'>Formulário enviado com sucesso!</h2>
-          <Button className='mx-auto mt-4 btn-success' onClick={handleNewFormClick}>
-            Enviar novo formulário
-          </Button>
-        </Card>
+          // Após o envio bem-sucedido, redireciona para o link desejado.
+          window.location.href = 'https://forms-site-pge-lj.vercel.app/form3'
       ) : (
         // Renderiza o formulário enquanto não foi enviado.
         <Card className='mt-4'>
