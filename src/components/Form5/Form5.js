@@ -42,7 +42,7 @@ const Form5 = () => {
       setSubmit(true);
       try {
         //https://docs.google.com/forms/d/e/1FAIpQLSf8FHnfwMRoLfnMIqUr4aApFdGQocIiz2qukEF6CG1XJ0q8FQ/formResponse?&entry.1304271638=Nome                           &entry.376011290=Telefone                      &entry.2024373529=Email                          &entry.1761543507=CEP                            &entry.595599005=Endereco                      &entry.795811870=Numero                        &entry.2137952858=complemento                    &entry.1701459400=Bairro                         &entry.1236342051=Cidade                         &entry.726940232=Estado
-        const url = `https://docs.google.com/forms/d/e/1FAIpQLSf8FHnfwMRoLfnMIqUr4aApFdGQocIiz2qukEF6CG1XJ0q8FQ/formResponse?&entry.1304271638=${formData['Nome']}&entry.376011290=${formData['Telefone']}&entry.2024373529=${formData['Email']}&entry.1761543507=${formData['CEP']}&entry.595599005=${formData['Endereco']}&entry.795811870=${formData['Numero']}&entry.2137952858=${formData['entry.2137952858']}&entry.1701459400=${formData['Bairro']}&entry.1236342051=${formData['Cidade']}&entry.726940232=${formData['Estado']}`;
+        const url = `https://docs.google.com/forms/d/e/1FAIpQLSf8FHnfwMRoLfnMIqUr4aApFdGQocIiz2qukEF6CG1XJ0q8FQ/formResponse?&entry.1304271638=${formData['Nome']}&entry.376011290=${formData['Telefone']}&entry.2024373529=${formData['Email']}&entry.1761543507=${formData['CEP']}&entry.595599005=${formData['Endereco']}&entry.795811870=${formData['Numero']}&entry.2137952858=${formData['complemento']}&entry.1701459400=${formData['Bairro']}&entry.1236342051=${formData['Cidade']}&entry.726940232=${formData['Estado']}`;
         const res = await fetch(url, {
           method: 'POST',
           headers: {
@@ -152,7 +152,8 @@ const Form5 = () => {
                       onChange={handleInputData('CEP')}
                       value={formData['CEP']}
                       name='CEP'
-                      maxLength={9} />
+                      minLength={9} 
+                      />
                     <Form.Control.Feedback type="invalid">
                       Informe o CEP
                     </Form.Control.Feedback>
@@ -245,7 +246,8 @@ const Form5 = () => {
                       className='form-control'
                       name='Estado'
                       onChange={handleInputData('Estado')}
-                      value={formData['Estado']} />
+                      value={formData['Estado']}
+                      maxLength={2}  />
                     <Form.Control.Feedback type="invalid">
                       Informe o Estado
                     </Form.Control.Feedback>

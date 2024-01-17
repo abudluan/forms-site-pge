@@ -11,15 +11,12 @@ import Form5 from './components/Form5/Form5';
 function App() {
   return (
     <Router>
-
       <Routes>
         <Route exact path='/' element={<Form1 />} />
         <Route exact path='/form2' element={<Form2 />} />
         <Route exact path='/form3' element={<Form3 />} />
         <Route exact path='/form4' element={<Form4 />} />
         <Route exact path='/form5' element={<Form5 />} />
-        
-        
       </Routes>
     </Router>
   );
