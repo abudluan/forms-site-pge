@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-const Formulario = () => {
+const Form6 = () => {
   const enviarDados = () => {
     var settings = {
       "url": "https://sheets.googleapis.com/v4/spreadsheets/1mX-5SRZy-t4ZcjY-tvqy-CDbpviXFPkqdkN_LPqB8Ls/values/Pagina:append?valueInputOption=USER_ENTERED",
@@ -26,4 +26,4 @@ const Formulario = () => {
   );
 }
 
-export default Formulario;
+export default Form6;
