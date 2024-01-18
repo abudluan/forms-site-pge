@@ -45,11 +45,12 @@ const Form6 = () => {
         const url = `https://sheets.googleapis.com/v4/spreadsheets/1mX-5SRZy-t4ZcjY-tvqy-CDbpviXFPkqdkN_LPqB8Ls/values/Pagina:append?valueInputOption=USER_ENTERED`;
         const res = await fetch(url, {
           method: 'POST',
+          timeout: 0,
           headers: {
             'Content-Type': 'text/html',
-            'Authorization': 'Bearer ya29.a0AfB_byD9LuTD83aNGhrmM4rsTgQLWF6Oc-Co9ftqzo0aJTQ0PNcCAJStLKJS1Dk5b4TurM6aLHqHtNBlX38vsoUeXwYpzt23d7ayHXcAwuYaywn5fWKprEN-VU8sZTsWmMXMIgblWUQK7VJZBgQATsM0LuFn9ccuSLEhaCgYKAXwSARMSFQHGX2MiUw6U7e4jMnLkmeog8XnYyQ0171',
-          data : '{\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\n      \"CLeyton\",\n      \"Muto\",\n      \"cleyton.muto\",\n      \"9191234-0000\"\n    ]\n  ]\n}'
-          }
+            'Authorization': 'Bearer ya29.a0AfB_byD9LuTD83aNGhrmM4rsTgQLWF6Oc-Co9ftqzo0aJTQ0PNcCAJStLKJS1Dk5b4TurM6aLHqHtNBlX38vsoUeXwYpzt23d7ayHXcAwuYaywn5fWKprEN-VU8sZTsWmMXMIgblWUQK7VJZBgQATsM0LuFn9ccuSLEhaCgYKAXwSARMSFQHGX2MiUw6U7e4jMnLkmeog8XnYyQ0171'
+          },
+          data:'{\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\n      \"CLeyton\",\n      \"Muto\",\n      \"cleyton.muto\",\n      \"9191234-0000\"\n    ]\n  ]\n}',
         });
         if (!res.ok) {
           console.error('Falha ao enviar o formulário. Status do erro:', res.status);
@@ -69,7 +70,11 @@ const Form6 = () => {
     window.location.reload();
   }
 
- 
+  const applyMask = (value) => {
+    // Remove caracteres não numéricos
+    const cleanedValue = value.replace(/\D/g, '');
+
+  };
 
   return (
     <Container>
@@ -87,6 +92,8 @@ const Form6 = () => {
           <Card.Body>
             <Form noValidate validated={validated} onSubmit={handleSubmit} target='_self'>
               
+
+             
               {loading && <div>Carregando...</div>}
               <Button className='btn-success px-5' type='submit' disabled={loading}>
                 Enviar
