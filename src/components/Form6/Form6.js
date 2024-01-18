@@ -14,7 +14,7 @@ const Form6 = () => {
 
   const enviarDados = () => {
     const xhr = new XMLHttpRequest();
-    const url = "https://sheets.googleapis.com/v4/spreadsheets/1c4YlHdr-JIEA2mlYDYND1d-2q_xRmh_a_Llfg2CqLaE/values/Dados do Contribuinte:append?valueInputOption=USER_ENTERED&access_token=YOUR_ACCESS_TOKEN";
+    const url = "https://sheets.googleapis.com/v4/spreadsheets/1c4YlHdr-JIEA2mlYDYND1d-2q_xRmh_a_Llfg2CqLaE/values/Dados do Contribuinte:append?valueInputOption=USER_ENTERED&access_token=ya29.a0AfB_byDzmzeBf2kno_-WFGv8tFPkwLF3mm_2VbIhUub5dnjKxZmhKvulbRI7c-lj1yjIoKCeu4bpEbFUoQ0XX-kpiDritCxs874NJV3ma_4SAgntGeOqnts1EKWmFdtRzJoS8qDDAY283g3lolccf6LqeaIa49a-eJUHaCgYKAa4SARISFQHGX2MiE38C7H8mju_cUFlJrUVpoA0171";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "text/html");
     xhr.onreadystatechange = function () {
