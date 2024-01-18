@@ -1,28 +1,36 @@
 import React from 'react';
-import $ from 'jquery';
 
 const Form6 = () => {
   const enviarDados = () => {
-    var settings = {
-      "url": "https://sheets.googleapis.com/v4/spreadsheets/1mX-5SRZy-t4ZcjY-tvqy-CDbpviXFPkqdkN_LPqB8Ls/values/Pagina:append?valueInputOption=USER_ENTERED",
-      "method": "POST",
-      "timeout": 0,
-      "headers": {
-        "Content-Type": "text/html",
-        "Authorization": "Bearer ya29.a0AfB_byD9LuTD83aNGhrmM4rsTgQLWF6Oc-Co9ftqzo0aJTQ0PNcCAJStLKJS1Dk5b4TurM6aLHqHtNBlX38vsoUeXwYpzt23d7ayHXcAwuYaywn5fWKprEN-VU8sZTsWmMXMIgblWUQK7VJZBgQATsM0LuFn9ccuSLEhaCgYKAXwSARMSFQHGX2MiUw6U7e4jMnLkmeog8XnYyQ0171"
-      },
-      "data": "{\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\n      \"CLeyton\",\n      \"Muto\",\n      \"cleyton.muto\",\n      \"9191234-0000\"\n    ]\n  ]\n}",
+    var xhr = new XMLHttpRequest();
+    var url = "https://sheets.googleapis.com/v4/spreadsheets/1mX-5SRZy-t4ZcjY-tvqy-CDbpviXFPkqdkN_LPqB8Ls/values/Pagina:append?valueInputOption=USER_ENTERED&access_token=ya29.a0AfB_byD2eVSGxt8m4f3fvAHhKF1W4JCd5704rcvCEEj4ue67Uxo_dDJmBTGAINNzgF468k56qyrMUGCzAKa0Ngzd3K2T8nvKZ6qO0VhUeEd_L0ybfhZS4UoOiKym5DKDPPTQyDYylUUZUmGVzz5jJsO8JD95Aafq4fLXYAaCgYKAZgSARMSFQHGX2Mi6qp62H30gWpJxAOMWI3NnQ0173";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "text/html");
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var json = JSON.parse(xhr.responseText);
+        console.log(json);
+      }
     };
-
-    $.ajax(settings).done(function (response) {
-      console.log(response);
+    var data = JSON.stringify({
+      "majorDimension": "ROWS",
+      "values": [
+        [
+          "Rafael",
+          "Monteiro",
+          "rafael.monteiro",
+          "9194321-1234"
+        ]
+      ]
     });
+    xhr.send(data);
   }
 
   return (
-    <form onSubmit={enviarDados}>
-      <button type="submit">Enviar</button>
-    </form>
+    <div>
+      <h2>Formulário</h2>
+      <button onClick={enviarDados}>Enviar</button>
+    </div>
   );
 }
 
