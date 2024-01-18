@@ -1,37 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Form6 = () => {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [cep, setCep] = useState('');
+  const [address, setAddress] = useState('');
+  const [number, setNumber] = useState('');
+  const [complement, setComplement] = useState('');
+  const [neighborhood, setNeighborhood] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+
   const enviarDados = () => {
-    var xhr = new XMLHttpRequest();
-    var url = "https://sheets.googleapis.com/v4/spreadsheets/1mX-5SRZy-t4ZcjY-tvqy-CDbpviXFPkqdkN_LPqB8Ls/values/Pagina:append?valueInputOption=USER_ENTERED&access_token=ya29.a0AfB_byD2eVSGxt8m4f3fvAHhKF1W4JCd5704rcvCEEj4ue67Uxo_dDJmBTGAINNzgF468k56qyrMUGCzAKa0Ngzd3K2T8nvKZ6qO0VhUeEd_L0ybfhZS4UoOiKym5DKDPPTQyDYylUUZUmGVzz5jJsO8JD95Aafq4fLXYAaCgYKAZgSARMSFQHGX2Mi6qp62H30gWpJxAOMWI3NnQ0173";
+    const xhr = new XMLHttpRequest();
+    const url = "https://sheets.googleapis.com/v4/spreadsheets/1c4YlHdr-JIEA2mlYDYND1d-2q_xRmh_a_Llfg2CqLaE/values/Dados do Contribuinte:append?valueInputOption=USER_ENTERED&access_token=YOUR_ACCESS_TOKEN";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "text/html");
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        var json = JSON.parse(xhr.responseText);
+        const json = JSON.parse(xhr.responseText);
         console.log(json);
       }
     };
-    var data = JSON.stringify({
+
+    // Obter data e hora atual considerando fuso horário -3
+    const currentDateTime = new Date();
+    currentDateTime.setHours(currentDateTime.getHours() - 3);
+
+    // Formatar data e hora no formato desejado
+    const formattedDateTime = currentDateTime.toLocaleString('pt-BR', { timeZone: 'UTC' });
+
+    const data = JSON.stringify({
       "majorDimension": "ROWS",
       "values": [
         [
-          "Rafael",
-          "Monteiro",
-          "rafael.monteiro",
-          "9194321-1234"
+          formattedDateTime,
+          name,
+          phone,
+          email,
+          cep,
+          address,
+          number,
+          complement,
+          neighborhood,
+          city,
+          state
         ]
       ]
     });
     xhr.send(data);
-  }
+  };
 
   return (
     <div>
       <h2>Formulário</h2>
-      <button onClick={enviarDados}>Enviar</button>
+      <form>
+        Nome: <input type="text" value={name} onChange={(e) => setName(e.target.value)} /><br />
+        Telefone de contato: <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} /><br />
+        E-mail: <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} /><br />
+        CEP: <input type="text" value={cep} onChange={(e) => setCep(e.target.value)} /><br />
+        Endereço: <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} /><br />
+        Número: <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} /><br />
+        Complemento: <input type="text" value={complement} onChange={(e) => setComplement(e.target.value)} /><br />
+        Bairro: <input type="text" value={neighborhood} onChange={(e) => setNeighborhood(e.target.value)} /><br />
+        Cidade: <input type="text" value={city} onChange={(e) => setCity(e.target.value)} /><br />
+        Estado: <input type="text" value={state} onChange={(e) => setState(e.target.value)} /><br />
+        <button type="button" onClick={enviarDados}>Enviar</button>
+      </form>
     </div>
   );
-}
+};
 
 export default Form6;
