@@ -201,7 +201,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-title'>Enviar documento</Form.Label>
+                <Form.Label className='form-title'>Enviar documento do contribuinte (Siga as instruções para o tipo de contribuinte) </Form.Label>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -228,7 +228,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-title'>Comprovante de residência</Form.Label>
+                <Form.Label className='form-title'>Outro documento</Form.Label>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -236,7 +236,7 @@ const Form1 = () => {
                   id='comprovanteResidencia'
                   accept='.pdf'
                   onChange={handleFileUpload2}
-                  required
+                  
                 />
                 <Form.Control.Feedback type="invalid">
                   Você deve escolher o arquivo
