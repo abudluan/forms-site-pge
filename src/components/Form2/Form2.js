@@ -170,7 +170,9 @@ const Form1 = () => {
                   Este prazo se dá devido à necessidade de compensação bancária. Nesta situação, não é preciso fazer 
                   este pedido, pois a carta de anuência chegará automaticamente ao cartório de protestos e ficará 
                   armazenada na CENPROT (Central de Protestos). O contribuinte, então, deverá ter feito o pagamento 
-                  das custas cartorárias, direto no cartório de protestos, para a baixa definitiva.
+                  das custas cartorárias, direto no cartório de protestos, para a baixa definitiva.<br>
+                  </br>
+                  Utilize o link abaixo para acompanhar a emissão da Carta de Anuência e realizar o donwload <a href="https://www.pesquisaprotesto.com.br/" target="_blank">https://www.pesquisaprotesto.com.br/</a>
                 </Accordion.Body>
 
                 <Accordion.Body>
