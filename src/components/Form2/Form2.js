@@ -160,7 +160,7 @@ const Form1 = () => {
                    foi remetido para o cartório de protestos, o pagamento deverá ser feito exclusiva e diretamente
                     no cartório que enviou a intimação (tanto do crédito fiscal quanto das custas cartorárias). 
                     Não aceite que ninguém mais lhe cobre por este serviço. Para o parcelamento, após o período de três
-                     dias úteis, o contribuinte deverá parcelar o seu débito direto no site eletrônico da SEFA,
+                     dias úteis após o recebimento da notificação, o contribuinte deverá parcelar o seu débito direto no site eletrônico da SEFA,
                       por meio do link: <a href="https://www.sefa.pa.gov.br/" target="_blank">https://www.sefa.pa.gov.br/</a>
                 </Accordion.Body>
 
