@@ -194,7 +194,7 @@ const Form1 = () => {
 
             <Form noValidate validated={validated} onSubmit={handleSubmit} target='_self'>
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1357688810' className='form-title'>Nome/Razão Social</Form.Label>
+                <Form.Label htmlFor='entry.1357688810' className='form-title required'>Nome/Razão Social</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
@@ -209,7 +209,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1453056265' className='form-title'>CPF / CNPJ </Form.Label>
+                <Form.Label htmlFor='entry.1453056265' className='form-title required'>CPF / CNPJ </Form.Label>
                 <Form.Text className='text-muted mx-2'>
                   (Somente números)
                 </Form.Text>
@@ -230,7 +230,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-title'>Documento de identificação válido, com foto</Form.Label>
+                <Form.Label className='form-title required'>Documento de identificação válido, com foto</Form.Label>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -257,7 +257,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-title'>Título recebido do Cartório de Protestos</Form.Label>
+                <Form.Label className='form-title required'>Título recebido do Cartório de Protestos</Form.Label>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -284,7 +284,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-title'>Guia de recolhimento (DAE)</Form.Label>
+                <Form.Label className='form-title required'>Guia de recolhimento (DAE)</Form.Label>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -311,7 +311,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-title'>Comprovante de pagamento</Form.Label>
+                <Form.Label className='form-title required'>Comprovante de pagamento</Form.Label>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -338,7 +338,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.526556254' className='form-title'>Telefone de contato</Form.Label>
+                <Form.Label htmlFor='entry.526556254' className='form-title required'>Telefone de contato</Form.Label>
                 <Form.Control
                   as={InputMask}
                   mask='(99)99999-9999'
@@ -356,7 +356,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.2009551761' className='form-title'>Email</Form.Label>
+                <Form.Label htmlFor='entry.2009551761' className='form-title required'>Email</Form.Label>
                 <Form.Control
                   type='email'
                   className='form-control'
@@ -371,7 +371,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1948919866' className='form-title'>Nome do titular / Representante legal</Form.Label>
+                <Form.Label htmlFor='entry.1948919866' className='form-title required'>Nome do titular / Representante legal</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
