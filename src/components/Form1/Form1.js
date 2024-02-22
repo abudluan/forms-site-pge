@@ -144,7 +144,7 @@ const Form1 = () => {
             <Form noValidate validated={validated} onSubmit={handleSubmit} target='_self'>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1357688810' className='form-title'>Nome/Razão Social</Form.Label>
+                <Form.Label htmlFor='entry.1357688810' className='form-title required'>Nome/Razão Social</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
@@ -159,7 +159,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1453056265' className='form-title'>CPF / CNPJ </Form.Label>
+                <Form.Label htmlFor='entry.1453056265' className='form-title required'>CPF / CNPJ </Form.Label>
                 <Form.Text className="text-muted mx-2">
                   (Somente números)
                 </Form.Text>
@@ -201,7 +201,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-title'>Enviar documento do contribuinte (Siga as instruções para o tipo de contribuinte) </Form.Label>
+                <Form.Label className='form-title required'>Enviar documento do contribuinte (Siga as instruções para o tipo de contribuinte) </Form.Label>
                 <Form.Control
                   className='form-control'
                   type='file'
@@ -264,7 +264,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1259162928' className='form-title'>CDA</Form.Label>
+                <Form.Label htmlFor='entry.1259162928' className='form-title required'>CDA</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
@@ -279,7 +279,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.526556254' className='form-title'>Telefone de contato</Form.Label>
+                <Form.Label htmlFor='entry.526556254' className='form-title required'>Telefone de contato</Form.Label>
                 <Form.Control
                   as={InputMask}
                   mask='(99)99999-9999'
@@ -298,7 +298,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.2009551761' className='form-title'>Email</Form.Label>
+                <Form.Label htmlFor='entry.2009551761' className='form-title required'>E-mail</Form.Label>
                 <Form.Control
                   type='email'
                   className='form-control'
@@ -313,7 +313,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1948919866' className='form-title'>Nome do titular / Representante legal</Form.Label>
+                <Form.Label htmlFor='entry.1948919866' className='form-title required'>Nome do titular / Representante legal</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
@@ -328,7 +328,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label className='form-title'>Termos</Form.Label>
+                <Form.Label className='form-title required'>Termos</Form.Label>
                 <p>Caso seu pedido já tenha sido levado a protesto ou à Ação de Execução Fiscal, fica ciente o contribuinte que é o responsável pelo pagamento das custas devidas.</p>
                 <p>Declaro estar ciente de que estou fornecendo voluntariamente meus dados pessoais, incluindo, mas não se limitando a, nome, CPF, endereço e informações financeiras, à Fazenda Pública Estadual. Reconheço que esses dados serão utilizados exclusivamente para fins de administração tributária, fiscalização, arrecadação, e demais procedimentos relacionados à gestão fiscal do Estado.</p>
                 <p>Estou ciente de que meus dados serão tratados em conformidade com as disposições da Lei Geral de Proteção de Dados (Lei nº 13.709/2018) e que tenho o direito de solicitar acesso, correção, limitação ou exclusão dos meus dados pessoais a qualquer momento, conforme previsto em lei, bem como dou meu consentimento livre, expresso e informado para que a Fazenda Pública Estadual processe meus dados pessoais conforme descrito acima.</p>
