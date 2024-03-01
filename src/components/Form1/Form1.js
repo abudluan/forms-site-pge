@@ -264,7 +264,7 @@ const Form1 = () => {
               </Form.Group>
 
               <Form.Group className='mb-3'>
-                <Form.Label htmlFor='entry.1259162928' className='form-title required'>CDA/CDAs (separe por vírgulas se mais de 1 CDA)</Form.Label>
+                <Form.Label htmlFor='entry.1259162928' className='form-title required'>CDA/CDAs (somente os números separados por vírgulas)</Form.Label>
                 <Form.Control
                   type='text'
                   className='form-control'
